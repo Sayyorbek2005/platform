@@ -1,5 +1,147 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+.app-layout {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+
+/* ? root */
+
+:root {
+  /* ? border radius */
+  --radius-5: border-radius: 5px;
+  --border-1: border: 1px solid black;
+  /* ? colors */
+  --primary-color: #2563eb;
+  --color-white: white;
+  --color-black: black;
+  --gradient-background: linear-gradient(135deg, #1e3a8a, #2563eb, #3b82f6);
+  /* ? fonts */
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-25: 25px;
+  --font-size-30: 30px;
+  --font-size-40: 40px;
+  --font-size-50: 50px;
+  /* ? font weight */
+  --font-weight-400: 400;
+  --font-weight-500: 500;
+  --font-weight-600: 600;
+  --font-weight-700: 700;
+  /* ? gap */
+  --gap-10: 10px;
+  --gap-20: 20px;
+  --gap-30: 30px;
+  --gap-40: 40px;
+  --gap-50: 50px;
+}
+
+
+/* ^ cursor pointer */
+
+button,
+i,
+svg,
+li {
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 97.3vh;
+  margin: 0;
+}
+
+/* Desktop (1200px va undan katta) */
+@media (min-width: 1200px) {
+  .page-content {
+    margin-left: 280px;
+  }
+
+  .sidebar-collapsed .page-content {
+    margin-left: 80px;
+  }
+}
+
+/* Notebook (992px - 1199px) */
+@media (max-width: 1199px) and (min-width: 992px) {
+  .page-content {
+    margin-left: 250px;
+  }
+
+  .sidebar-collapsed .page-content {
+    margin-left: 70px;
+  }
+}
+
+/* Planshet (768px - 991px) */
+@media (max-width: 991px) and (min-width: 768px) {
+  .page-content {
+    margin-left: 220px;
+  }
+
+  .sidebar-collapsed .page-content {
+    margin-left: 65px;
+  }
+}
+
+/* Telefon (767px va kichik) */
+@media (max-width: 767px) {
+  .page-content {
+    margin-left: 0 !important;
+    padding: 15px !important;
+    width: 100% !important;
+  }
+}
+
+/* Kichik telefon (480px va kichik) */
+@media (max-width: 480px) {
+  .page-content {
+    padding: 12px !important;
+  }
+}
+
+/* Umumiy scrollbar styles */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Mobile sidebar overlay animation */
+.sidebar-overlay {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
