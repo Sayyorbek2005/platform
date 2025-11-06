@@ -50,7 +50,7 @@ const Contact = () => {
             <FaEnvelope />
             <div>
               <h4>Email</h4>
-              <p>youremail@email.com</p>
+              <p>youremail@gmail.com</p>
             </div>
           </InfoItem>
 

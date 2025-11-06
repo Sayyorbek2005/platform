@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import {
   BackgroundHeader,
-  MaxWidth, 
+  MaxWidth,
   HeaderWrapper,
   InputContainer,
   SearchIcon,
@@ -10,36 +10,49 @@ import {
   UploadIcon,
   UserInfo,
   UserName,
-} from './Header.styles'
+  SidebarToggleBtn,
+  Overlay,
+} from "./Header.styles";
+import { RiMenuFoldFill, RiMenuUnfoldFill } from "react-icons/ri";
 
-const Header = () => {
+const Header = ({ sidebarOpen, onToggle, isMobile }) => {
   return (
-    <BackgroundHeader>
-      <MaxWidth>
-        <HeaderWrapper>
-          <ul>
-            <InputContainer>
+    <>
+      <BackgroundHeader>
+        <MaxWidth>
+          <HeaderWrapper sidebarOpen={sidebarOpen}>
+            <InputContainer sidebarOpen={sidebarOpen}>
               <SearchIcon />
               <input type="text" placeholder="Search" />
             </InputContainer>
-          </ul>
 
-          <RightSection>
-            <li>
+            <RightSection>
+              <SidebarToggleBtn onClick={onToggle} title="Toggle Sidebar">
+                {sidebarOpen ? (
+                  <RiMenuFoldFill size={22} />
+                ) : (
+                  <RiMenuUnfoldFill size={22} />
+                )}
+              </SidebarToggleBtn>
+
               <UploadBtn>
                 <UploadIcon />
                 Upload
               </UploadBtn>
-            </li>
-            <li>
+
               <UserInfo>
                 <UserName>Mitchel</UserName>
               </UserInfo>
-            </li>
-          </RightSection>
-        </HeaderWrapper>
-      </MaxWidth> 
-    </BackgroundHeader>
+            </RightSection>
+          </HeaderWrapper>
+        </MaxWidth>
+      </BackgroundHeader>
+
+      {/* Mobile overlay */}
+      {isMobile && sidebarOpen && (
+        <Overlay onClick={onToggle} />
+      )}
+    </>
   );
 };
 

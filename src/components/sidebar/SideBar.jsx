@@ -1,18 +1,16 @@
-import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
-import imgLogo from "./assets/logo.png";
+import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import imgLogo from "./assets/logotwo.png";
 
 import {
   IoHomeSharp,
   IoChatbubbleOutline,
-  IoMenu,
-  IoClose,
   IoDocumentText,
 } from "react-icons/io5";
 import {
   FaLaptopCode,
-  FaBullhorn,
   FaUserTie,
+  FaBullhorn,
   FaTelegramPlane,
   FaInstagram,
   FaYoutube,
@@ -21,122 +19,141 @@ import {
 } from "react-icons/fa";
 import { MdContactMail, MdWork } from "react-icons/md";
 import { HiUserGroup } from "react-icons/hi";
-import { CgMenuRight } from "react-icons/cg";
-import { HiMenuAlt1 } from "react-icons/hi";
-
 
 import {
   SidebarContainer,
-  SidebarOverlay,
   Logo,
   Menu,
   MenuItem,
   MenuLink,
   Icon,
   Text,
-  ToggleButton,
-  CollapseButton,
   SocialIconsContainer,
   SocialIconLink,
+  CloseButton,
+  Overlay
 } from "./Sidebar.styles";
 
-const SideBar = () => {
+const links = [
+  { icon: <IoHomeSharp />, label: "Home", path: "/" },
+  { icon: <FaLaptopCode />, label: "Web Project", path: "/projects" },
+  { icon: <FaUserTie />, label: "Mentors", path: "/mentors" },
+  { icon: <FaBullhorn />, label: "Reklamalar", path: "/reklamalar" },
+  { icon: <IoChatbubbleOutline />, label: "Chat", path: "/chat" },
+  {
+    icon: <IoDocumentText />,
+    label: "Taklif va Murojatlar",
+    path: "/taklifvamurojatlar",
+  },
+  { icon: <HiUserGroup />, label: "Join Us", path: "/joinus" },
+  { icon: <MdContactMail />, label: "Contact", path: "/contact" },
+  { icon: <MdWork />, label: "Frilance", path: "/frilace" },
+];
+
+const socialLinks = [
+  {
+    icon: <FaTelegramPlane />,
+    url: "https://web.telegram.org/k/",
+    name: "Telegram",
+  },
+  {
+    icon: <FaInstagram />,
+    url: "https://www.instagram.com/",
+    name: "Instagram",
+  },
+  {
+    icon: <FaYoutube />,
+    url: "https://www.youtube.com/",
+    name: "YouTube",
+  },
+  {
+    icon: <FaLinkedinIn />,
+    url: "https://www.linkedin.com/",
+    name: "LinkedIn",
+  },
+  {
+    icon: <FaGithub />,
+    url: "https://github.com/",
+    name: "GitHub",
+  },
+];
+
+const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
   const location = useLocation();
-  const [isOpen, setIsOpen] = useState(true);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const handleResize = () => {
-      const mobile = window.innerWidth < 768;
-      setIsMobile(mobile);
-      if (!mobile) {
-        setIsOpen(true);
-      }
-    };
+  const handleLinkClick = (path) => {
+    navigate(path);
+    if (isMobile) {
+      onToggle();
+    }
+  };
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const links = [
-    { icon: <IoHomeSharp />, label: "Home", path: "/" },
-    { icon: <FaLaptopCode />, label: "Web Project", path: "/projects" },
-    { icon: <FaUserTie />, label: "Mentors", path: "/mentors" },
-    { icon: <FaBullhorn />, label: "Reklamalar", path: "/reklamalar" },
-    { icon: <IoChatbubbleOutline />, label: "Chat", path: "/chat" },
-    { icon: <IoDocumentText />, label: "Taklif Va Murojatlar", path: "/taklifvamurojatlar" },
-    { icon: <HiUserGroup />, label: "Join Us", path: "/joinus" },
-    { icon: <HiUserGroup />, label: "Texnologiya", path: "/texnologiya" },
-    { icon: <MdContactMail />, label: "Contact", path: "/contact" },
-    { icon: <MdWork />, label: "Frilace", path: "/frilace" },
-  ];
-
-  const socialLinks = [
-    { icon: <FaTelegramPlane />, url: "https://web.telegram.org/k/" },
-    { icon: <FaInstagram />, url: "https://instagram.com/" },
-    { icon: <FaYoutube />, url: "https://youtube.com/" },
-    { icon: <FaLinkedinIn />, url: "https://linkedin.com/in/" },
-    { icon: <FaGithub />, url: "https://github.com/" },
-  ];
-
-  const toggleSidebar = () => {
-    setIsOpen(!isOpen);
+  const handleClose = () => {
+    if (isMobile) {
+      onToggle();
+    }
   };
 
   return (
     <>
-      {isMobile && isOpen && (
-        <SidebarOverlay onClick={toggleSidebar} />
-      )}
-
       <SidebarContainer isOpen={isOpen} isMobile={isMobile}>
-        {isMobile && (
-          <ToggleButton onClick={toggleSidebar}>
-            {isOpen ? <IoClose /> : <IoMenu />}
-          </ToggleButton>
+        {/* Mobile uchun yopish tugmasi */}
+        {isMobile && isOpen && (
+          <CloseButton onClick={handleClose}>
+            ✕
+          </CloseButton>
         )}
-
-        {!isMobile && (
-          <CollapseButton onClick={toggleSidebar}>
-            {isOpen ? <CgMenuRight /> : <HiMenuAlt1 />}
-          </CollapseButton>
-        )}
-
+        
         <Logo isOpen={isOpen}>
           <img src={imgLogo} alt="Logo" />
         </Logo>
 
         <Menu>
-          {links.map(({ icon, label, path }) => (
-            <MenuItem key={label}>
-              <MenuLink
-                to={path}
-                className={location.pathname === path ? "active" : ""}
-                onClick={() => isMobile && setIsOpen(false)}
-              >
-                <Icon>{icon}</Icon>
-                {isOpen && <Text>{label}</Text>}
-              </MenuLink>
-            </MenuItem>
-          ))}
+          {links.map(({ icon, label, path }) => {
+            const isActive = location.pathname === path;
+            return (
+              <MenuItem key={label}>
+                <MenuLink
+                  to={path}
+                  className={isActive ? "active" : ""}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(path);
+                  }}
+                >
+                  <Icon>{icon}</Icon>
+                  <Text isOpen={isOpen}>{label}</Text>
+                </MenuLink>
+              </MenuItem>
+            );
+          })}
         </Menu>
-        <SocialIconsContainer isOpen={isOpen}>
-          {socialLinks.map((link, index) => (
-            <SocialIconLink
-              key={index}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              title={link.url.split('/')[2].replace('www.', '').split('.')[0]} // Avtomatik sarlavha
-            >
-              {link.icon}
-            </SocialIconLink>
-          ))}
-        </SocialIconsContainer>
 
+        {/* Social iconlarni faqat sidebar ochiq bo'lganda ko'rsatish */}
+        {isOpen && (
+          <SocialIconsContainer>
+            {socialLinks.map(({ icon, url, name }) => (
+              <SocialIconLink
+                key={url}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={name}
+              >
+                {icon}
+              </SocialIconLink>
+            ))}
+          </SocialIconsContainer>
+        )}
       </SidebarContainer>
+
+      {/* Mobile overlay */}
+      {isMobile && (
+        <Overlay isOpen={isOpen} onClick={handleClose} />
+      )}
     </>
   );
 };
 
-export default SideBar;
+export default Sidebar;
