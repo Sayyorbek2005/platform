@@ -84,9 +84,9 @@ const App = () => {
       <div
         className="page-content"
         style={{
-          marginLeft: getContentMargin(),
+          // marginLeft: getContentMargin(),
           transition: 'margin-left 0.3s ease, padding 0.3s ease',
-          padding: '20px',
+          // padding: '20px',
           // marginTop: '70px',
           minHeight: 'calc(97vh - 70px)',
           // overflowY: 'auto'
