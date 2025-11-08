@@ -86,9 +86,6 @@ const App = () => {
         style={{
           marginLeft: getContentMargin(),
           transition: 'margin-left 0.3s ease, padding 0.3s ease',
-          padding: '20px',
-          marginTop: '70px',
-          minHeight: 'calc(100vh - 70px)',
           overflowY: 'auto'
         }}
       >
