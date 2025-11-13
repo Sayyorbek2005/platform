@@ -34,16 +34,14 @@ const Header = ({ sidebarOpen, onToggle, isMobile }) => {
                   <RiMenuUnfoldFill size={22} />
                 )}
               </SidebarToggleBtn>
-
               <UploadBtn
                 as="a"
                 href="/assets/IT_SAF.docx"
-                download="IT_SAF_CV.pdf"
+                download="IT_SAF_CV.docx"
               >
                 <UploadIcon />
                 Yuklab olish
               </UploadBtn>
-
               {/* <UserInfo>
                 <UserName>Mitchel</UserName>
               </UserInfo> */}

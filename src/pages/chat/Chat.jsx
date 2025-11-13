@@ -3,8 +3,8 @@ import React from "react";
 import { ChatSection, Wrapper } from "./chat.style";
 import ChatImg from "./assets/ChatImg.jpg";
 import Telgram from "./assets/telegram 2.png";
-import Instagram from "./assets/instagram.png";
-import Youtube from "./assets/youtube.png";
+// import Instagram from "./assets/instagram.png";
+// import Youtube from "./assets/youtube.png";
 
 const Chat = ({ sidebarOpen }) => {
   return (
@@ -25,10 +25,11 @@ const Chat = ({ sidebarOpen }) => {
                   <div className="icon">
                     <p className="icon_top">Telagram</p>
                     <a href="https://t.me/furure_programmers">
-                      <img src={Telgram} alt="" />
+                      {/* <img src={Telgram} alt="" /> */}
+                      Telagram
                     </a>
                   </div>
-                  <div className="icon">
+                  {/* <div className="icon">
                     <p className="icon_top">Instagram</p>
                     <a href="https://www.instagram.com/IT_saf_sam">
                       <img src={Instagram} alt="" />
@@ -39,7 +40,7 @@ const Chat = ({ sidebarOpen }) => {
                     <a href="https://www.youtube.com/@It_Saf">
                       <img src={Youtube} alt="" />
                     </a>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className="right">
@@ -54,3 +55,5 @@ const Chat = ({ sidebarOpen }) => {
 };
 
 export default Chat;
+
+

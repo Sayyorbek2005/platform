@@ -156,7 +156,6 @@ const Home = ({ sidebarOpen }) => {
                       working with SSL, domains, hosting, 
                       and SEO to build fully responsive websites.”
                     </p>
-                    <p></p>
                   </div>
                   <div className="right">
                     <img src={logo} alt="" style={{ width: "400px" }} />

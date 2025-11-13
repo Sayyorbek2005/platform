@@ -4,17 +4,12 @@ export const AdviseSection = styled.div`
   max-width: 1280px;
   width: calc(100% - 270px);
   padding: 20px;
-  /* background-color: rgba(244, 236, 240, 0.35); */
   position: absolute;
-  /* min-height: 90vh; */
-  height: 100%;
+  height:80%;
   top: 125px;
-  left: 270px;
+  left: 270px;  
   border-radius: 20px;
   transition: all 0.3s ease;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
 
   @media (max-width: 1024px) {
     width: calc(100% - 230px);
