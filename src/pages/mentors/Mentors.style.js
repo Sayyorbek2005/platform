@@ -4,10 +4,9 @@ export const MentorsSection = styled.div`
   max-width: 1280px;
   width: calc(100% - 270px); 
   padding: 20px;
-  background-color: rgba(244, 236, 240, 0.35);
   position: absolute;
   height: 97%;
-  top: 270px;
+  top: 365px;
   left: 270px; 
   border-radius: 20px;
   transition: all 0.3s ease;
