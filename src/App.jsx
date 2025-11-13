@@ -83,9 +83,6 @@ const App = () => {
         style={{
           marginLeft: getContentMargin(),
           transition: "margin-left 0.3s ease",
-          // padding: "20px",
-          // marginTop: "70px",
-          // minHeight: "calc(97vh - 70px)",
         }}
       >
         <ToastContainer />

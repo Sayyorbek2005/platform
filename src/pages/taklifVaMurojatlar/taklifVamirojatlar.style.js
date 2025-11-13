@@ -8,7 +8,7 @@ export const AdviseSection = styled.div`
   position: absolute;
   /* min-height: 90vh; */
   height: 100%;
-  top: 70px;
+  top: 125px;
   left: 270px;
   border-radius: 20px;
   transition: all 0.3s ease;
