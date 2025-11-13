@@ -6,7 +6,7 @@ export const MentorsSection = styled.div`
   padding: 20px;
   position: absolute;
   height: 97%;
-  top: 365px;
+  top: 350px;
   left: 270px; 
   border-radius: 20px;
   transition: all 0.3s ease;

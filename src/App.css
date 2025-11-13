@@ -20,6 +20,8 @@
   --font-weight-500: 500;
   --font-weight-600: 600;
   --font-weight-700: 700;
+  --font-weight-800: 800;
+
   --gap-10: 10px;
   --gap-20: 20px;
   --gap-30: 30px;
@@ -35,10 +37,11 @@ li {
 }
 
 
-ul,ol{
+ul, ol {
   list-style: none;
 }
-a{
+
+a {
   text-decoration: none;
 }
 
@@ -46,43 +49,39 @@ a{
 .main-container {
   transition: all 0.3s ease;
   position: absolute;
-  /* top: 80px; */
-  left: 140px; /* Sidebar ochiq bo'lganda */
-  width: calc(100% - 270px); /* Sidebar kengligini hisobga olgan holda */
+  left: 140px;
+  width: calc(100% - 270px);
 }
 
 .main-container.sidebar-collapsed {
-  left: -80px; /* Sidebar yopiq bo'lganda */
-  width: calc(100% - 80px); /* Kichik sidebar kengligi */
+  left: -80px;
+  width: calc(100% - 80px);
 }
 
-/* 1300px dan past */
 @media (max-width: 1300px) {
   .main-container {
     left: 240px;
     width: calc(100% - 240px);
   }
-  
+
   .main-container.sidebar-collapsed {
     left: 80px;
     width: calc(100% - 80px);
   }
 }
 
-/* 1024px dan past */
 @media (max-width: 1024px) {
   .main-container {
     left: 200px;
     width: calc(100% - 200px);
   }
-  
+
   .main-container.sidebar-collapsed {
     left: 70px;
     width: calc(100% - 70px);
   }
 }
 
-/* 900px dan past */
 @media (max-width: 900px) {
   .main-container {
     left: 0;
@@ -90,26 +89,26 @@ a{
     padding: 25px;
     border-radius: 0;
   }
-  
+
   .main-container.sidebar-collapsed {
     left: 0;
     width: 100%;
   }
 }
 
-/* 768px dan past - mobil versiya */
 @media (max-width: 768px) {
+
   .main-container,
   .main-container.sidebar-collapsed {
     left: 0;
     width: 100%;
     padding: 20px;
-    top: 70px; /* Mobil header balandligi */
+    top: 70px;
   }
 }
 
-/* 480px dan past */
 @media (max-width: 480px) {
+
   .main-container,
   .main-container.sidebar-collapsed {
     padding: 15px;
@@ -117,12 +116,11 @@ a{
   }
 }
 
-/* 350px dan past */
 @media (max-width: 350px) {
+
   .main-container,
   .main-container.sidebar-collapsed {
     padding: 10px;
-    /* top: 56px; */
   }
 }
 
@@ -135,44 +133,24 @@ main {
   margin: 0;
 }
 
-
-
-/* App layout */
-.app-layout {
-  position: relative;
-}
-
-/* Page content */
-.page-content {
-  transition: margin-left 0.3s ease;
-  /* margin-top: 70px; */
-  min-height: calc(100vh - 70px);
-  /* background-color: #f8f9fa; */
-  /* background-color: red; */
-}
-
-/* Desktop (1200px va undan katta) */
 @media (min-width: 1200px) {
   .page-content {
     margin-left: 280px;
   }
 }
 
-/* Notebook (992px - 1199px) */
 @media (max-width: 1199px) and (min-width: 992px) {
   .page-content {
     margin-left: 250px;
   }
 }
 
-/* Planshet (768px - 991px) */
 @media (max-width: 991px) and (min-width: 768px) {
   .page-content {
     margin-left: 220px;
   }
 }
 
-/* Telefon (767px va kichik) */
 @media (max-width: 767px) {
   .page-content {
     margin-left: 0 !important;
@@ -181,7 +159,6 @@ main {
   }
 }
 
-/* Umumiy scrollbar styles */
 ::-webkit-scrollbar {
   width: 6px;
 }
