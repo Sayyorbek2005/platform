@@ -4,52 +4,28 @@
   box-sizing: border-box;
 }
 
-.app-layout {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-
-
-/* ? root */
-
 :root {
-  /* ? border radius */
-  --radius-5: border-radius: 5px;
-  --border-1: border: 1px solid black;
-  /* ? colors */
+  --radius-5: 5px;
   --primary-color: #2563eb;
   --color-white: white;
   --color-black: black;
   --gradient-background: linear-gradient(135deg, #1e3a8a, #2563eb, #3b82f6);
-  /* ? fonts */
   --font-size-18: 18px;
   --font-size-20: 20px;
   --font-size-25: 25px;
   --font-size-30: 30px;
   --font-size-40: 40px;
   --font-size-50: 50px;
-  /* ? font weight */
   --font-weight-400: 400;
   --font-weight-500: 500;
   --font-weight-600: 600;
   --font-weight-700: 700;
-  --font-weight-800: 800;
-  --font-weight-900: 900;
-
-  /* ? gap */
   --gap-10: 10px;
   --gap-20: 20px;
   --gap-30: 30px;
   --gap-40: 40px;
   --gap-50: 50px;
 }
-
-
-/* ^ cursor pointer */
 
 button,
 i,
@@ -58,23 +34,130 @@ li {
   cursor: pointer;
 }
 
+
+ul,ol{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+
+.main-container {
+  transition: all 0.3s ease;
+  position: absolute;
+  /* top: 80px; */
+  left: 140px; /* Sidebar ochiq bo'lganda */
+  width: calc(100% - 270px); /* Sidebar kengligini hisobga olgan holda */
+}
+
+.main-container.sidebar-collapsed {
+  left: -80px; /* Sidebar yopiq bo'lganda */
+  width: calc(100% - 80px); /* Kichik sidebar kengligi */
+}
+
+/* 1300px dan past */
+@media (max-width: 1300px) {
+  .main-container {
+    left: 240px;
+    width: calc(100% - 240px);
+  }
+  
+  .main-container.sidebar-collapsed {
+    left: 80px;
+    width: calc(100% - 80px);
+  }
+}
+
+/* 1024px dan past */
+@media (max-width: 1024px) {
+  .main-container {
+    left: 200px;
+    width: calc(100% - 200px);
+  }
+  
+  .main-container.sidebar-collapsed {
+    left: 70px;
+    width: calc(100% - 70px);
+  }
+}
+
+/* 900px dan past */
+@media (max-width: 900px) {
+  .main-container {
+    left: 0;
+    width: 100%;
+    padding: 25px;
+    border-radius: 0;
+  }
+  
+  .main-container.sidebar-collapsed {
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* 768px dan past - mobil versiya */
+@media (max-width: 768px) {
+  .main-container,
+  .main-container.sidebar-collapsed {
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    top: 70px; /* Mobil header balandligi */
+  }
+}
+
+/* 480px dan past */
+@media (max-width: 480px) {
+  .main-container,
+  .main-container.sidebar-collapsed {
+    padding: 15px;
+    top: 60px;
+  }
+}
+
+/* 350px dan past */
+@media (max-width: 350px) {
+  .main-container,
+  .main-container.sidebar-collapsed {
+    padding: 10px;
+    top: 56px;
+  }
+}
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 97.3vh;
+  min-height: 97vh;
   margin: 0;
+}
+
+
+
+/* App layout */
+.app-layout {
+  position: relative;
+  min-height: 100%;
+  /* background-color: #f8f9fa; */
+  background-color: blue;
+}
+
+/* Page content */
+.page-content {
+  transition: margin-left 0.3s ease;
+  margin-top: 70px;
+  min-height: calc(100vh - 70px);
+  /* background-color: #f8f9fa; */
+  /* background-color: red; */
 }
 
 /* Desktop (1200px va undan katta) */
 @media (min-width: 1200px) {
   .page-content {
     margin-left: 280px;
-  }
-
-  .sidebar-collapsed .page-content {
-    margin-left: 80px;
   }
 }
 
@@ -83,10 +166,6 @@ main {
   .page-content {
     margin-left: 250px;
   }
-
-  .sidebar-collapsed .page-content {
-    margin-left: 70px;
-  }
 }
 
 /* Planshet (768px - 991px) */
@@ -94,25 +173,14 @@ main {
   .page-content {
     margin-left: 220px;
   }
-
-  .sidebar-collapsed .page-content {
-    margin-left: 65px;
-  }
 }
 
 /* Telefon (767px va kichik) */
 @media (max-width: 767px) {
   .page-content {
     margin-left: 0 !important;
-    padding: 15px !important;
+    padding: 0 !important;
     width: 100% !important;
-  }
-}
-
-/* Kichik telefon (480px va kichik) */
-@media (max-width: 480px) {
-  .page-content {
-    padding: 12px !important;
   }
 }
 
@@ -132,19 +200,4 @@ main {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
-}
-
-/* Mobile sidebar overlay animation */
-.sidebar-overlay {
-  animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }

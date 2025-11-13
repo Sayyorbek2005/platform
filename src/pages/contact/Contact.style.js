@@ -15,14 +15,13 @@ const vars = {
 const device = {
   desktop: "1440px",
   notebook: "1200px",
-  tablet: "900px",
-  phone: "600px",
+  tablet: "768px", // 900px dan 768px ga o'zgartirildi
+  phone: "480px",  // 600px dan 480px ga o'zgartirildi
 };
 
 export const Container = styled.div`
   max-width: 1280px;
   margin: auto;
-  /* margin-left: calc(${vars.sidebarWidth} + 40px); */
   padding: 40px;
   display: grid;
   grid-template-columns: 1fr 380px;
@@ -30,26 +29,32 @@ export const Container = styled.div`
   color: ${vars.text};
   transition: all 0.3s ease;
 
-  @media (max-width: ${device.desktop}) {
+  // Desktop (1440px+)
+  @media (min-width: ${device.desktop}) {
+    max-width: 1400px;
+    padding: 60px;
+  }
+
+  // Notebook (1200px - 1439px)
+  @media (max-width: ${device.notebook}) {
+    grid-template-columns: 1fr 340px;
     gap: 36px;
     padding: 32px;
   }
 
-  @media (max-width: ${device.notebook}) {
-    margin-left: calc(${vars.sidebarWidth} + 20px);
-    grid-template-columns: 1fr 320px;
-  }
-
+  // Tablet (768px - 1199px)
   @media (max-width: ${device.tablet}) {
-    margin-left: 0;
     grid-template-columns: 1fr;
     gap: 32px;
     max-width: 90%;
+    padding: 24px;
   }
 
+  // Phone (480px va kichikroq)
   @media (max-width: ${device.phone}) {
-    padding: 18px;
+    padding: 16px;
     gap: 24px;
+    max-width: 95%;
   }
 `;
 
@@ -130,17 +135,57 @@ export const FormSection = styled.section`
     }
   }
 
+  // Tablet
   @media (max-width: ${device.tablet}) {
     padding: 28px;
+    
+    h2 {
+      font-size: 24px;
+    }
+    
+    form {
+      gap: 14px;
+      
+      input, textarea {
+        padding: 12px 14px;
+        font-size: 14px;
+      }
+      
+      textarea {
+        min-height: 120px;
+      }
+    }
   }
 
+  // Phone
   @media (max-width: ${device.phone}) {
     padding: 20px;
+    
     h2 {
       font-size: 22px;
     }
+    
     p {
-      font-size: 13px;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    
+    form {
+      gap: 12px;
+      
+      input, textarea {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
+      
+      textarea {
+        min-height: 100px;
+      }
+      
+      button[type="submit"] {
+        width: 100%;
+        text-align: center;
+      }
     }
   }
 `;
@@ -150,8 +195,15 @@ export const InputGroup = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 
+  // Tablet
   @media (max-width: ${device.tablet}) {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  // Phone
+  @media (max-width: ${device.phone}) {
+    gap: 10px;
   }
 `;
 
@@ -193,8 +245,24 @@ export const InfoSection = styled.aside`
     }
   }
 
+  // Tablet
+  @media (max-width: ${device.tablet}) {
+    padding: 28px;
+    gap: 20px;
+  }
+
+  // Phone
   @media (max-width: ${device.phone}) {
     padding: 22px;
+    gap: 18px;
+    
+    h4 {
+      font-size: 15px;
+    }
+    
+    p, a {
+      font-size: 13px;
+    }
   }
 `;
 
@@ -210,12 +278,27 @@ export const InfoItem = styled.div`
     border-radius: 10px;
     background: rgba(11, 99, 255, 0.08);
     color: ${vars.accent};
+    flex-shrink: 0;
   }
 
+  // Tablet
+  @media (max-width: ${device.tablet}) {
+    gap: 12px;
+    
+    svg {
+      width: 36px;
+      height: 36px;
+    }
+  }
+
+  // Phone
   @media (max-width: ${device.phone}) {
+    gap: 10px;
+    
     svg {
       width: 32px;
       height: 32px;
+      padding: 6px;
     }
   }
 `;
@@ -224,6 +307,12 @@ export const SocialIcons = styled.div`
   display: flex;
   gap: 12px;
   margin-top: 8px;
+
+  // Phone
+  @media (max-width: ${device.phone}) {
+    gap: 10px;
+    justify-content: center;
+  }
 `;
 
 export const IconLink = styled.a`
@@ -245,9 +334,17 @@ export const IconLink = styled.a`
     box-shadow: 0 8px 18px rgba(3, 30, 68, 0.1);
   }
 
+  // Tablet
+  @media (max-width: ${device.tablet}) {
+    width: 40px;
+    height: 40px;
+    font-size: 17px;
+  }
+
+  // Phone
   @media (max-width: ${device.phone}) {
-    width: 36px;
-    height: 36px;
+    width: 38px;
+    height: 38px;
     font-size: 16px;
   }
 `;

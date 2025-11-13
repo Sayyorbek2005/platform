@@ -6,13 +6,14 @@ export const ChatSection = styled.div`
   padding: 20px;
   position: absolute;
   height: 90%;
-  top: 100px;
+  top: 70px;
   left: 270px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   display: flex;
   align-items: center;
   justify-content: center;
   transition: 0.3s;
+  /* background-color: red; */
 
   /* 📱 1000px dan past bo‘lsa — pozitsiyani normal qilamiz */
   @media (max-width: 1000px) {

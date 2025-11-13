@@ -7,6 +7,7 @@ export const MentorsSection = styled.div`
   background-color: rgba(244, 236, 240, 0.35);
   position: absolute;
   height: 97%;
+  top: 270px;
   left: 270px; 
   border-radius: 20px;
   transition: all 0.3s ease;

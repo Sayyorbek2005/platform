@@ -69,7 +69,8 @@ export const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-width: 600px;
+      max-width: 700px !important;
+      width: 100%;
 
       h1 {
         font-size: 36px;

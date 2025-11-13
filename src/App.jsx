@@ -24,7 +24,7 @@ const App = () => {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-
+      
       if (mobile) {
         setSidebarOpen(false);
       } else {
@@ -47,24 +47,25 @@ const App = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  // Responsive margin-left hisoblash
   const getContentMargin = () => {
-    if (isMobile) {
-      return "0";
-    }
-    
+    if (isMobile) return "0";
+
     if (window.innerWidth >= 1200) {
-      // Desktop
       return sidebarOpen ? "280px" : "80px";
     } else if (window.innerWidth >= 992) {
-      // Notebook
       return sidebarOpen ? "250px" : "70px";
     } else if (window.innerWidth >= 768) {
-      // Planshet
       return sidebarOpen ? "220px" : "65px";
     }
-    
+
     return "0";
+  };
+
+  // Barcha sahifalarga uzatiladigan common props
+  const commonProps = {
+    sidebarOpen,
+    onToggle: handleSidebarToggle,
+    isMobile
   };
 
   return (
@@ -75,32 +76,31 @@ const App = () => {
         isMobile={isMobile}
       />
 
-      <Header
-        sidebarOpen={sidebarOpen}
-        onToggle={handleSidebarToggle}
-        isMobile={isMobile}
-      />
+      <Header {...commonProps} />
 
       <div
         className="page-content"
         style={{
           marginLeft: getContentMargin(),
-          transition: 'margin-left 0.3s ease, padding 0.3s ease',
-          overflowY: 'auto'
+          transition: "margin-left 0.3s ease",
+          // padding: "20px",
+          // marginTop: "70px",
+          // minHeight: "calc(97vh - 70px)",
         }}
       >
         <ToastContainer />
+        
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/mentors" element={<Mentors />} />
-          <Route path="/reklamalar" element={<Reklamalar />} />
-          <Route path="/chat" element={<Chat />} />
-          <Route path="/taklifvamurojatlar" element={<TaklifVaMurojatlar />} />
-          <Route path="/joinus" element={<JoinUs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/frilace" element={<Frilace />} />
-          <Route path="*" element={<NotFound />} />
+          <Route path="/" element={<Home {...commonProps} />} />
+          <Route path="/projects" element={<Projects {...commonProps} />} />
+          <Route path="/mentors" element={<Mentors {...commonProps} />} />
+          <Route path="/reklamalar" element={<Reklamalar {...commonProps} />} />
+          <Route path="/chat" element={<Chat {...commonProps} />} />
+          <Route path="/taklifvamurojatlar" element={<TaklifVaMurojatlar {...commonProps} />} />
+          <Route path="/joinus" element={<JoinUs {...commonProps} />} />
+          <Route path="/contact" element={<Contact {...commonProps} />} />
+          <Route path="/frilace" element={<Frilace {...commonProps} />} />
+          <Route path="*" element={<NotFound {...commonProps} />} />
         </Routes>
       </div>
     </div>

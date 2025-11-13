@@ -8,8 +8,8 @@ import {
   RightSection,
   UploadBtn,
   UploadIcon,
-  UserInfo,
-  UserName,
+  // UserInfo,
+  // UserName,
   SidebarToggleBtn,
   Overlay,
 } from "./Header.styles";
@@ -35,23 +35,25 @@ const Header = ({ sidebarOpen, onToggle, isMobile }) => {
                 )}
               </SidebarToggleBtn>
 
-              <UploadBtn>
+              <UploadBtn
+                as="a"
+                href="/assets/IT_SAF.docx"
+                download="IT_SAF_CV.pdf"
+              >
                 <UploadIcon />
-                Upload
+                Yuklab olish
               </UploadBtn>
 
-              <UserInfo>
+              {/* <UserInfo>
                 <UserName>Mitchel</UserName>
-              </UserInfo>
+              </UserInfo> */}
             </RightSection>
           </HeaderWrapper>
         </MaxWidth>
       </BackgroundHeader>
 
       {/* Mobile overlay */}
-      {isMobile && sidebarOpen && (
-        <Overlay onClick={onToggle} />
-      )}
+      {isMobile && sidebarOpen && <Overlay onClick={onToggle} />}
     </>
   );
 };
