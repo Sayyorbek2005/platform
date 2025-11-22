@@ -150,11 +150,11 @@ const Home = ({ sidebarOpen }) => {
                   <div className="left">
                     <h1>IT SAF - dasturlash kurslari</h1>
                     <p>
-                      “We are frontend developers specializing in creating
-                      modern websites. 
-                      We focus on UI/UX, design, and functionality, as well as
-                      working with SSL, domains, hosting, 
-                      and SEO to build fully responsive websites.”
+                      “Biz zamonaviy veb-saytlar yaratishga ixtisoslashgan
+                      frontend dasturchilarimiz. Biz UI/UX, dizayn va
+                      funksionallikka e’tibor beramiz, shuningdek SSL, domenlar,
+                      xosting va SEO bilan ishlaymiz. To‘liq moslashuvchan
+                      (responsive) veb-saytlar yaratamiz.””
                     </p>
                   </div>
                   <div className="right">

@@ -86,7 +86,6 @@ const App = () => {
         }}
       >
         <ToastContainer />
-        
         <Routes>
           <Route path="/" element={<Home {...commonProps} />} />
           <Route path="/projects" element={<Projects {...commonProps} />} />

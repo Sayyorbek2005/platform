@@ -2,21 +2,29 @@ import styled from "styled-components";
 
 export const AdviseSection = styled.div`
   max-width: 1280px;
-  width: calc(100% - 270px);
+  width: ${({ sidebarOpen }) => (sidebarOpen ? "calc(100% - 270px)" : "100%")};
   padding: 20px;
   position: absolute;
-  height:80%;
+  height: 80%;
   top: 125px;
-  left: 270px;  
+  left: ${({ sidebarOpen }) => (sidebarOpen ? "270px" : "0")};
   border-radius: 20px;
   transition: all 0.3s ease;
+  background-color: #f9fafb;
+  box-sizing: border-box;
+  left: 100px;
 
-  @media (max-width: 1024px) {
-    width: calc(100% - 230px);
-    left: 230px;
-    top: 80px;
+  /* 📱 1300px dan kichik ekranlarda sidebar yopiladi */
+  @media (max-width: 1300px) {
+    width: calc(100% - 40px); /* chap va o‘ngdan 20px oraliq */
+    left: 20px;
+    right: 20px;
+    position: relative;
+    top: 100px;
+    height: auto;
   }
 
+  /* 📱 768px dan kichiklarda to‘liq kenglik */
   @media (max-width: 768px) {
     width: 100%;
     left: 0;
@@ -40,6 +48,7 @@ export const Wrapper = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 19px 2px rgba(117, 139, 155, 0.15);
   background: white;
+  transition: 0.3s;
 
   @media (max-width: 1024px) {
     gap: 30px;

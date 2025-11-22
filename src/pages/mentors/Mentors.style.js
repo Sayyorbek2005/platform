@@ -6,12 +6,15 @@ export const MentorsSection = styled.div`
   padding: 20px;
   position: absolute;
   height: 97%;
-  top: 350px;
+  top: 150px;
   left: 270px; 
   border-radius: 20px;
   transition: all 0.3s ease;
   margin: auto;
-
+  /* background-color: red; */
+  height: 500px;
+  box-shadow: 0px 0px 19px 2px rgba(117, 139, 155, 0.15);
+  
   @media (max-width: 900px) {
     left: 0;
     width: 100%;

@@ -35,9 +35,9 @@ import {
 } from "./Sidebar.styles";
 
 const links = [
-  { icon: <IoHomeSharp />, label: "Home", path: "/" },
-  { icon: <FaLaptopCode />, label: "Web Project", path: "/projects" },
-  { icon: <FaUserTie />, label: "Mentors", path: "/mentors" },
+  { icon: <IoHomeSharp />, label: "Bosh sahifa", path: "/" },
+  { icon: <FaLaptopCode />, label: "Web Loyiha", path: "/projects" },
+  { icon: <FaUserTie />, label: "O'qituvchilar", path: "/mentors" },
   { icon: <FaBullhorn />, label: "Reklamalar", path: "/reklamalar" },
   { icon: <IoChatbubbleOutline />, label: "Chat", path: "/chat" },
   {
@@ -45,9 +45,9 @@ const links = [
     label: "Taklif va Murojatlar",
     path: "/taklifvamurojatlar",
   },
-  { icon: <HiUserGroup />, label: "Join Us", path: "/joinus" },
+  { icon: <HiUserGroup />, label: "Bizga qo'shiling", path: "/joinus" },
   { icon: <MdContactMail />, label: "Contact", path: "/contact" },
-  { icon: <MdWork />, label: "Frilance", path: "/frilace" },
+  { icon: <MdWork />, label: "Freelance", path: "/frilace" },
 ];
 
 const socialLinks = [

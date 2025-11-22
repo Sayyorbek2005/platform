@@ -94,7 +94,7 @@ export const InputContainer = styled.li`
   transition: all 0.3s ease;
 
   &:focus-within {
-    box-shadow: 0 0 0 1px #8b5cf6;
+    box-shadow: 0 0 0 1px #0b63ff;
     background-color: #ffffff;
   }
 
