@@ -76,15 +76,11 @@ const Projects = ({ sidebarOpen }) => {
               onClick={prev}
               style={{
                 fontSize: "30px",
-                fontWeight: "400",
                 border: "1px solid #0b63ff",
                 background: "none",
                 cursor: "pointer",
                 color: "#0b63ff",
                 padding: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 borderRadius: "10px",
               }}
             >
@@ -105,7 +101,7 @@ const Projects = ({ sidebarOpen }) => {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "50px",
+                  gap: "40px",
                   animation:
                     direction === "next"
                       ? "slideNext 0.6s ease forwards"
@@ -118,6 +114,7 @@ const Projects = ({ sidebarOpen }) => {
                   <h1>{box.number}</h1>
                   <h2 style={{ color: "#0b63ff" }}>{box.name}</h2>
                   <p>{box.des}</p>
+
                   <Phones>
                     <a
                       href="tel:883443036"
@@ -125,6 +122,7 @@ const Projects = ({ sidebarOpen }) => {
                     >
                       {box.phone}
                     </a>
+
                     <a
                       href="https://t.me/@azimjonovich_13"
                       rel="noopener noreferrer"
@@ -145,15 +143,11 @@ const Projects = ({ sidebarOpen }) => {
               onClick={next}
               style={{
                 fontSize: "30px",
-                fontWeight: "400",
                 border: "1px solid #0b63ff",
                 background: "none",
                 cursor: "pointer",
                 color: "#0b63ff",
                 padding: "5px",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
                 borderRadius: "10px",
               }}
             >
@@ -161,17 +155,16 @@ const Projects = ({ sidebarOpen }) => {
             </button>
           </Wrapper>
 
-          {/* Animatsiya uchun style */}
           <style>{`
-        @keyframes slideNext {
-          0% { transform: translateX(100%); opacity: 0; }
-          100% { transform: translateX(0); opacity: 1; }
-          }
-          @keyframes slidePrev {
-            0% { transform: translateX(-100%); opacity: 0; }
-            100% { transform: translateX(0); opacity: 1; }
+            @keyframes slideNext {
+              0% { transform: translateX(100%); opacity: 0; }
+              100% { transform: translateX(0); opacity: 1; }
             }
-            `}</style>
+            @keyframes slidePrev {
+              0% { transform: translateX(-100%); opacity: 0; }
+              100% { transform: translateX(0); opacity: 1; }
+            }
+          `}</style>
         </MentorsSection>
       </div>
     </section>

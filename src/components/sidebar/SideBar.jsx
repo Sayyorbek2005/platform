@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import imgLogo from "./assets/logotwo.png";
+import lock from "./assets/lock.png";
 
 import {
   IoHomeSharp,
@@ -40,42 +41,28 @@ const links = [
   { icon: <FaUserTie />, label: "O'qituvchilar", path: "/mentors" },
   { icon: <FaBullhorn />, label: "Reklamalar", path: "/reklamalar" },
   { icon: <IoChatbubbleOutline />, label: "Chat", path: "/chat" },
-  {
-    icon: <IoDocumentText />,
-    label: "Taklif va Murojatlar",
-    path: "/taklifvamurojatlar",
-  },
+  { icon: <IoDocumentText />, label: "Taklif va Murojatlar", path: "/taklifvamurojatlar" },
   { icon: <HiUserGroup />, label: "Bizga qo'shiling", path: "/joinus" },
   { icon: <MdContactMail />, label: "Contact", path: "/contact" },
-  { icon: <MdWork />, label: "Freelance", path: "/frilace" },
+
+  { 
+    icon: <MdWork />, 
+    label: (
+      <div style={{ display: "flex",width:"180px", alignItems: "center", gap: "6px", justifyContent: "space-between"}}>
+        Freelance
+        <img src={lock} width="18" alt="lock" style={{color: "blue"}} />
+      </div>
+    ),
+    path: "/frilace" 
+  },
 ];
 
 const socialLinks = [
-  {
-    icon: <FaTelegramPlane />,
-    url: "https://web.telegram.org/k/",
-    name: "Telegram",
-  },
-  {
-    icon: <FaInstagram />,
-    url: "https://www.instagram.com/",
-    name: "Instagram",
-  },
-  {
-    icon: <FaYoutube />,
-    url: "https://www.youtube.com/",
-    name: "YouTube",
-  },
-  {
-    icon: <FaLinkedinIn />,
-    url: "https://www.linkedin.com/",
-    name: "LinkedIn",
-  },
-  {
-    icon: <FaGithub />,
-    url: "https://github.com/",
-    name: "GitHub",
-  },
+  { icon: <FaTelegramPlane />, url: "https://web.telegram.org/k/", name: "Telegram" },
+  { icon: <FaInstagram />, url: "https://www.instagram.com/", name: "Instagram" },
+  { icon: <FaYoutube />, url: "https://www.youtube.com/", name: "YouTube" },
+  { icon: <FaLinkedinIn />, url: "https://www.linkedin.com/", name: "LinkedIn" },
+  { icon: <FaGithub />, url: "https://github.com/", name: "GitHub" },
 ];
 
 const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
@@ -84,27 +71,15 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
 
   const handleLinkClick = (path) => {
     navigate(path);
-    if (isMobile) {
-      onToggle();
-    }
-  };
-
-  const handleClose = () => {
-    if (isMobile) {
-      onToggle();
-    }
+    if (isMobile) onToggle();
   };
 
   return (
     <>
       <SidebarContainer isOpen={isOpen} isMobile={isMobile}>
-        {/* Mobile uchun yopish tugmasi */}
-        {isMobile && isOpen && (
-          <CloseButton onClick={handleClose}>
-            ✕
-          </CloseButton>
-        )}
-        
+
+        {isMobile && isOpen && <CloseButton onClick={onToggle}>✕</CloseButton>}
+
         <Logo isOpen={isOpen}>
           <img src={imgLogo} alt="Logo" />
         </Logo>
@@ -112,8 +87,9 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
         <Menu>
           {links.map(({ icon, label, path }) => {
             const isActive = location.pathname === path;
+
             return (
-              <MenuItem key={label}>
+              <MenuItem key={path}>
                 <MenuLink
                   to={path}
                   className={isActive ? "active" : ""}
@@ -123,35 +99,31 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
                   }}
                 >
                   <Icon>{icon}</Icon>
-                  <Text isOpen={isOpen}>{label}</Text>
+
+                  {/* TEXT yoki TEXT + LOCK */}
+                  <Text isOpen={isOpen}>
+                    {label}
+                  </Text>
+
                 </MenuLink>
               </MenuItem>
             );
           })}
         </Menu>
 
-        {/* Social iconlarni faqat sidebar ochiq bo'lganda ko'rsatish */}
         {isOpen && (
           <SocialIconsContainer>
             {socialLinks.map(({ icon, url, name }) => (
-              <SocialIconLink
-                key={url}
-                href={url}
-                target="_blank"
-                rel="noopener noreferrer"
-                title={name}
-              >
+              <SocialIconLink key={url} href={url} target="_blank">
                 {icon}
               </SocialIconLink>
             ))}
           </SocialIconsContainer>
         )}
+
       </SidebarContainer>
 
-      {/* Mobile overlay */}
-      {isMobile && (
-        <Overlay isOpen={isOpen} onClick={handleClose} />
-      )}
+      {isMobile && <Overlay isOpen={isOpen} onClick={onToggle} />}
     </>
   );
 };

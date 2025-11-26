@@ -36,9 +36,9 @@ const JoinUs = ({ sidebarOpen }) => {
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [showImagePreview, setShowImagePreview] = useState(false);
   const [slides, setSlides] = useState([
-    { id: 1, type: "simple", content: "Slide 1" },
-    { id: 2, type: "simple", content: "Slide 2" },
-    { id: 3, type: "simple", content: "Slide 3" },
+    { id: 1, type: "simple", content: "Slayd 1" },
+    { id: 2, type: "simple", content: "Slayd 2" },
+    { id: 3, type: "simple", content: "Slayd 3" },
   ]);
   const fileInputRef = useRef(null);
 

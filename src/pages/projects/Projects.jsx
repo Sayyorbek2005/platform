@@ -54,11 +54,8 @@ import TypeScript from "./assets/icons8-typescript-240.png";
 import Vue from "./assets/icons8-vue-js-240.png";
 import CPlusPlus from "./assets/icons8-c-240.png";
 import Python from "./assets/icons8-python-240.png";
-// import NodeJs from './assets/a0442558db3e99f463efcbe7789d016d.jpg';
-// import FirebaseLogo from './assets/firebase-e1534378181405.png';
-// import TailwindCSS from './assets/1_llpgEffXPgjMN0qbkLEfWQ.jpg';
 
-// Technologies array with images
+// Technologies array
 const technologies = [
   { name: "HTML5", img: HTML },
   { name: "CSS3", img: CSS },
@@ -71,57 +68,54 @@ const technologies = [
   { name: "Vue.js", img: Vue },
   { name: "C++", img: CPlusPlus },
   { name: "Python", img: Python },
-  // { name: "Node.js", img: NodeJs },
-  // { name: "Firebase", img: FirebaseLogo },
-  // { name: "Tailwind CSS", img: TailwindCSS },
 ];
 
-// What I Can Build section
+// What I Can Build
 const whatICanBuild = [
   {
-    name: "Online Shop",
+    name: "Onlayn do‘kon",
     icon: <FaShoppingCart />,
-    description: "Full-featured e-commerce websites",
+    description: "To‘liq funktsional elektron tijorat saytlari",
   },
   {
-    name: "Real-time Chat App",
+    name: "Real vaqtli chat ilovasi",
     icon: <FaCommentDots />,
-    description: "Instant messaging applications",
+    description: "Tezkor xabar almashish ilovalari",
   },
   {
-    name: "Portfolio Website",
+    name: "Portfolio veb-sayti",
     icon: <FaBriefcase />,
-    description: "Professional portfolio sites",
+    description: "Professional portfolio saytlar",
   },
   {
     name: "Landing Page",
     icon: <FaFileCode />,
-    description: "Design optimized landing pages",
+    description: "Dizayni optimallashtirilgan landing sahifalar",
   },
   {
-    name: "Responsive Web Design",
+    name: "Moslashuvchan dizayn",
     icon: <FaDesktop />,
-    description: "Mobile-friendly responsive designs",
+    description: "Mobil va turli ekranlarga moslashuvchan dizaynlar",
   },
   {
-    name: "Business Website",
+    name: "Biznes sayti",
     icon: <FaBuilding />,
-    description: "Corporate business websites",
+    description: "Korporativ biznes saytlar",
   },
   {
-    name: "CRM Systems",
+    name: "CRM tizimlari",
     icon: <FaBuilding />,
-    description: "Customer relationship management systems",
+    description: "Mijozlar bilan munosabatlarni boshqarish tizimlari",
   },
   {
-    name: "Company Portfolio",
+    name: "Kompaniya portfoliosi",
     icon: <FaBuilding />,
-    description: "Showcase company projects and services",
+    description: "Kompaniya loyihalari va xizmatlarini namoyish qilish",
   },
   {
-    name: "Forms Design",
+    name: "Formalar dizayni",
     icon: <FaBuilding />,
-    description: "User-friendly form interfaces",
+    description: "Foydalanuvchiga qulay formalar interfeysi",
   },
 ];
 
@@ -130,8 +124,8 @@ const projectData = {
   all: [
     {
       id: 1,
-      title: "Advanced Calculator",
-      desc: "Modern calculator with scientific functions and beautiful UI design for precise calculations",
+      title: "Kengaytirilgan kalkulyator",
+      desc: "Zamonaviy kalkulyator – ilmiy funksiyalar va chiroyli interfeys dizayni bilan aniq hisob-kitoblar uchun",
       tags: ["HTML", "CSS", "JavaScript", "Responsive"],
       img: Allimg1,
       github: "https://github.com/Mukhamadaliev/Arsha.git",
@@ -140,8 +134,8 @@ const projectData = {
     },
     {
       id: 2,
-      title: "Portfolio Website",
-      desc: "Professional portfolio showcasing projects with smooth animations and modern design",
+      title: "Portfolio veb-sayti",
+      desc: "Professional portfolio – loyihalarni namoyish qiluvchi, silliq animatsiyalar va zamonaviy dizayn bilan",
       tags: ["React", "Styled Components", "Framer Motion"],
       img: Allimg2,
       github: "https://github.com/Mukhamadaliev/Passion.git",
@@ -150,8 +144,8 @@ const projectData = {
     },
     {
       id: 3,
-      title: "E-commerce Platform",
-      desc: "Full-stack e-commerce solution with cart, payments and admin dashboard",
+      title: "Elektron tijorat platformasi",
+      desc: "To‘liq full-stack elektron tijorat yechimi – savatcha, to‘lovlar va admin panel bilan",
       tags: ["React", "Node.js", "MongoDB", "Stripe"],
       img: Allimg3,
       github: "https://github.com/Mukhamadaliev/Platia.git",
@@ -159,8 +153,8 @@ const projectData = {
     },
     {
       id: 4,
-      title: "Task Manager",
-      desc: "Productivity app with real-time collaboration and project management features",
+      title: "Vazifa boshqaruvchisi",
+      desc: "Ish unumdorligini oshiruvchi ilova – real vaqtda hamkorlik va loyiha boshqaruv funksiyalari bilan",
       tags: ["React", "Firebase", "PWA", "Responsive"],
       img: Allimg4,
       github: "https://github.com/Mukhamadaliev/iPortfolio.git",
@@ -168,8 +162,8 @@ const projectData = {
     },
     {
       id: 5,
-      title: "Weather Dashboard",
-      desc: "Beautiful weather app with forecasts, charts and interactive maps",
+      title: "Ob-havo boshqaruv paneli",
+      desc: "Chiroyli ob-havo ilovasi – prognozlar, grafiklar va interaktiv xaritalar bilan",
       tags: ["React", "API", "Chart.js", "Geolocation"],
       img: Allimg5,
       github: "https://github.com/Mukhamadaliev/FolioOne",
@@ -177,8 +171,8 @@ const projectData = {
     },
     {
       id: 6,
-      title: "Social Media App",
-      desc: "Modern social platform with real-time messaging and community features",
+      title: "Ijtimoiy tarmoqlar ilovasi",
+      desc: "Zamonaviy ijtimoiy platforma – real vaqtli xabarlar va jamoa funksiyalari bilan",
       tags: ["React", "Firebase", "Node.js", "Socket.io"],
       img: Allimg6,
       github: "https://github.com/Mukhamadaliev/MyPage.git",
@@ -189,7 +183,7 @@ const projectData = {
     {
       id: 7,
       title: "Landing Page",
-      desc: "Modern landing page with animations and responsive design",
+      desc: "Animatsiyalar va moslashuvchan dizayn bilan zamonaviy landing sahifa",
       tags: ["HTML", "CSS", "JavaScript", "GSAP"],
       img: Allimg1,
       github: "https://github.com/Mukhamadaliev/landing",
@@ -198,7 +192,7 @@ const projectData = {
     {
       id: 8,
       title: "Admin Dashboard",
-      desc: "Responsive admin panel with charts and data visualization",
+      desc: "Diagrammalar va ma’lumot vizualizatsiyasi bilan moslashuvchan admin panel",
       tags: ["React", "Chart.js", "Material-UI"],
       img: Allimg2,
       github: "https://github.com/Mukhamadaliev/dashboard",
@@ -208,8 +202,8 @@ const projectData = {
   seo: [
     {
       id: 9,
-      title: "SEO Optimized Blog",
-      desc: "Blog platform with advanced SEO features and performance optimization",
+      title: "SEO optimallashtirilgan blog",
+      desc: "Kengaytirilgan SEO funksiyalari va yuqori ishlash samaradorligiga ega blog platforma",
       tags: ["SEO", "React", "Next.js", "Performance"],
       img: Allimg3,
       github: "https://github.com/Mukhamadaliev/seo-blog",
@@ -219,8 +213,8 @@ const projectData = {
   domainhosting: [
     {
       id: 10,
-      title: "Cloud Hosting Service",
-      desc: "Complete hosting management system with automation features",
+      title: "Bulutli hosting xizmati",
+      desc: "Avtomatlashtirilgan funksiyalarga ega to‘liq hosting boshqaruv tizimi",
       tags: ["Hosting", "cPanel", "Automation", "DNS"],
       img: Allimg4,
       github: "https://github.com/Mukhamadaliev/hosting",
@@ -230,8 +224,8 @@ const projectData = {
   ssl: [
     {
       id: 11,
-      title: "SSL Manager",
-      desc: "SSL certificate management and security monitoring system",
+      title: "SSL menejeri",
+      desc: "SSL sertifikatlarini boshqarish va xavfsizlik monitoring tizimi",
       tags: ["SSL", "Security", "HTTPS", "Monitoring"],
       img: Allimg5,
       github: "https://github.com/Mukhamadaliev/ssl-manager",
@@ -247,7 +241,7 @@ const Projects = ({ sidebarOpen }) => {
   const categories = [
     {
       key: "all",
-      label: "All Projects",
+      label: "Barcha loyihalar",
       icon: <FiCode />,
       count: projectData.all.length,
     },
@@ -271,7 +265,7 @@ const Projects = ({ sidebarOpen }) => {
     },
     {
       key: "ssl",
-      label: "SSL Security",
+      label: "SSL xavfsizligi",
       icon: <FiShield />,
       count: projectData.ssl.length,
     },
@@ -285,9 +279,9 @@ const Projects = ({ sidebarOpen }) => {
         <main>
           <ConteinerProjects>
             <div className="header-section">
-              <h1>My Projects</h1>
+              <h1>Mening loyihalarim</h1>
               <p className="subtitle">
-                Discover my creative work and technical solutions
+                Mening ijodiy ishlarim va texnik yechimlarimni kashf eting
               </p>
             </div>
 
@@ -319,7 +313,7 @@ const Projects = ({ sidebarOpen }) => {
                               href={project.github}
                               target="_blank"
                               rel="noopener noreferrer"
-                              title="View Source Code"
+                              title="Manba kodni ko‘rish"
                             >
                               <FaGithub size={18} />
                             </IconLink>
@@ -327,7 +321,7 @@ const Projects = ({ sidebarOpen }) => {
                               href={project.demo}
                               target="_blank"
                               rel="noopener noreferrer"
-                              title="Live Demo"
+                              title="Jonli demo"
                             >
                               <SiVercel size={18} />
                             </IconLink>
@@ -336,7 +330,7 @@ const Projects = ({ sidebarOpen }) => {
 
                         {project.featured && (
                           <div className="featured-badge">
-                            <span>⭐ Featured</span>
+                            <span>⭐ Tavsiya etilgan</span>
                           </div>
                         )}
                       </ProjectImage>
@@ -354,14 +348,13 @@ const Projects = ({ sidebarOpen }) => {
                   ))}
                 </ProjectsGrid>
 
-                {/* Technologies section - only for "All Projects" */}
                 {filter === "all" && (
                   <>
                     <TechnologiesSection>
-                      <h2>Technologies I Use</h2>
+                      <h2>Texnologiyalarim</h2>
                       <p className="tech-subtitle">
-                        Modern tools and technologies for building amazing web
-                        experiences
+                        Ajoyib veb tajribalarni yaratishda zamonaviy vositalar va
+                        texnologiyalar
                       </p>
                       <TechnologiesGrid>
                         {technologies.map((tech, index) => (
@@ -379,11 +372,10 @@ const Projects = ({ sidebarOpen }) => {
                       </TechnologiesGrid>
                     </TechnologiesSection>
 
-                    {/* What I Can Build section */}
                     <WhatICanBuildSection>
-                      <h2>What I Can Build</h2>
+                      <h2>Nimalarni yaratishim mumkin</h2>
                       <p className="build-subtitle">
-                        Custom solutions tailored to your business needs
+                        Biznesingiz ehtiyojlariga moslashtirilgan maxsus yechimlar
                       </p>
                       <WhatICanBuildGrid>
                         {whatICanBuild.map((item, index) => (
@@ -403,8 +395,8 @@ const Projects = ({ sidebarOpen }) => {
                 <div className="empty-icon">
                   <FiSearch size={60} />
                 </div>
-                <h3>No projects found</h3>
-                <p>We're working on adding more projects to this category.</p>
+                <h3>Loyiha topilmadi</h3>
+                <p>Bu kategoriya uchun yangi loyihalar qo‘shilmoqda.</p>
               </EmptyState>
             )}
           </ConteinerProjects>

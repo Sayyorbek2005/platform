@@ -2,48 +2,27 @@ import styled from "styled-components";
 
 export const HomeSection = styled.div`
   max-width: 1280px;
-  width: calc(100% - 270px);
+  top: 70px;
+  width: 100%;
   padding: 40px;
-  position: absolute;
-  top: 77px;
-  left: 270px;
   border-radius: 20px;
-  /* background-color: rgba(124, 109, 117, 0.16); */
   transition: all 0.3s ease;
+  position: relative;
 
-  /* 1300px dan past */
-  @media (max-width: 1300px) {
-    width: calc(100% - 240px);
-    left: 240px;
-    padding: 35px;
-  }
-
-  /* 1024px dan past */
-  @media (max-width: 1024px) {
-    width: calc(100% - 200px);
-    left: 200px;
-    padding: 30px;
-  }
-
-  /* 900px dan past */
   @media (max-width: 900px) {
-    width: 100%;
-    left: 0;
-    padding: 25px;
+    top: 70px;
     border-radius: 0;
+    padding: 25px;
   }
 
-  /* 768px dan past */
   @media (max-width: 768px) {
+    top: 20px;
     padding: 20px;
   }
 
-  /* 480px dan past */
   @media (max-width: 480px) {
     padding: 15px;
   }
-
-  /* 350px dan past */
   @media (max-width: 350px) {
     padding: 10px;
   }
@@ -56,6 +35,7 @@ export const Wrapper = styled.div`
 
   /* === START SECTION === */
   .start {
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -69,7 +49,7 @@ export const Wrapper = styled.div`
       display: flex;
       flex-direction: column;
       gap: 10px;
-      max-width: 700px !important;
+      max-width: 700px;
       width: 100%;
 
       h1 {
@@ -83,11 +63,11 @@ export const Wrapper = styled.div`
         }
 
         @media (max-width: 600px) {
-          font-size: 24px;
+          font-size: 26px;
         }
 
         @media (max-width: 350px) {
-          font-size: 20px;
+          font-size: 22px;
         }
       }
 
@@ -111,49 +91,36 @@ export const Wrapper = styled.div`
       }
     }
 
-    .right {
-      img {
-        width: 220px;
-        height: auto;
-        object-fit: contain;
+    .right img {
+      width: 220px;
+      object-fit: contain;
 
-        @media (max-width: 900px) {
-          width: 180px;
-        }
+      @media (max-width: 900px) {
+        width: 180px;
+      }
 
-        @media (max-width: 600px) {
-          width: 150px;
-        }
+      @media (max-width: 600px) {
+        width: 150px;
+      }
 
-        @media (max-width: 480px) {
-          width: 120px;
-        }
+      @media (max-width: 480px) {
+        width: 120px;
+      }
 
-        @media (max-width: 350px) {
-          width: 100px;
-        }
+      @media (max-width: 350px) {
+        width: 100px;
       }
     }
 
-    /* 900px dan past — ustma-ust */
     @media (max-width: 900px) {
       flex-direction: column;
       text-align: center;
       gap: 20px;
       padding: 25px;
     }
-
-    @media (max-width: 480px) {
-      padding: 20px;
-    }
-
-    @media (max-width: 350px) {
-      padding: 15px;
-      gap: 15px;
-    }
   }
 
-  /* === END SECTION (KURSLAR) === */
+  /* === END SECTION === */
   .end {
     display: flex;
     flex-direction: column;
@@ -184,7 +151,6 @@ export const Wrapper = styled.div`
       justify-content: center;
       gap: 20px;
       padding: 10px;
-      transition: all 0.3s ease;
 
       @media (max-width: 768px) {
         gap: 15px;
@@ -194,10 +160,6 @@ export const Wrapper = styled.div`
         flex-direction: column;
         align-items: center;
         gap: 12px;
-      }
-
-      @media (max-width: 350px) {
-        gap: 10px;
       }
     }
 
@@ -221,7 +183,7 @@ export const Wrapper = styled.div`
           height: 160px;
         }
 
-@media (max-width: 480px) {
+        @media (max-width: 480px) {
           height: 140px;
         }
 

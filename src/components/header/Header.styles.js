@@ -83,7 +83,7 @@ export const HeaderWrapper = styled.header`
   }
 `;
 
-export const InputContainer = styled.li`
+export const InputContainer = styled.div`
   display: flex;
   align-items: center;
   background-color: #f6f6f6;
@@ -92,10 +92,16 @@ export const InputContainer = styled.li`
   width: 520px;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  position: relative;
 
   &:focus-within {
     box-shadow: 0 0 0 1px #0b63ff;
     background-color: #ffffff;
+  }
+
+  /* Search natijalari ko'rinayotganda border radiusni o'zgartirish */
+  &.search-active {
+    border-radius: 20px 20px 0 0;
   }
 
   input {
@@ -188,7 +194,119 @@ export const SearchIcon = styled(IoSearch)`
   }
 `;
 
-export const RightSection = styled.ul`
+export const SearchResults = styled.ul`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  margin-top: 0;
+  padding: 8px 0;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 999;
+  list-style: none;
+  animation: slideDown 0.2s ease;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Desktop */
+  @media (min-width: 1200px) {
+    width: ${({ sidebarOpen }) => (sidebarOpen ? "520px" : "600px")};
+  }
+
+  /* Notebook */
+  @media (max-width: 1199px) and (min-width: 992px) {
+    width: ${({ sidebarOpen }) => (sidebarOpen ? "480px" : "550px")};
+  }
+
+  /* Planshet */
+  @media (max-width: 991px) and (min-width: 768px) {
+    width: ${({ sidebarOpen }) => (sidebarOpen ? "400px" : "480px")};
+  }
+
+  /* Telefon */
+  @media (max-width: 767px) {
+    width: 100%;
+    max-width: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* Kichik telefon */
+  @media (max-width: 480px) {
+    max-width: 100%;
+  }
+`;
+
+export const SearchResultItem = styled.li`
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #f0f0f0;
+  color: #333;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: #f8f9fa;
+    color: #0b63ff;
+  }
+
+  &.no-results {
+    color: #999;
+    cursor: default;
+    
+    &:hover {
+      background-color: transparent;
+      color: #999;
+    }
+  }
+
+  /* Notebook */
+  @media (max-width: 1199px) and (min-width: 992px) {
+    padding: 11px 18px;
+    font-size: 14px;
+  }
+
+  /* Planshet */
+  @media (max-width: 991px) and (min-width: 768px) {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  /* Telefon */
+  @media (max-width: 767px) {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  /* Kichik telefon */
+  @media (max-width: 480px) {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+`;
+
+export const RightSection = styled.div`
   display: flex;
   gap: 15px;
   align-items: center;
@@ -197,44 +315,24 @@ export const RightSection = styled.ul`
   padding: 0;
   list-style: none;
 
-  li:not(:last-child) {
-    margin-right: 15px;
-  }
-
   /* Notebook */
   @media (max-width: 1199px) and (min-width: 992px) {
     gap: 12px;
-    
-    li:not(:last-child) {
-      margin-right: 12px;
-    }
   }
 
   /* Planshet */
   @media (max-width: 991px) and (min-width: 768px) {
     gap: 10px;
-    
-    li:not(:last-child) {
-      margin-right: 10px;
-    }
   }
 
   /* Telefon */
   @media (max-width: 767px) {
     gap: 8px;
-    
-    li:not(:last-child) {
-      margin-right: 8px;
-    }
   }
 
   /* Kichik telefon */
   @media (max-width: 480px) {
     gap: 6px;
-    
-    li:not(:last-child) {
-      margin-right: 6px;
-    }
   }
 `;
 
@@ -324,56 +422,6 @@ export const UploadIcon = styled(IoCloudUpload)`
   }
 `;
 
-export const UserInfo = styled.div`
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 8px;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-
-  /* Telefon */
-  @media (max-width: 767px) {
-    padding: 3px 6px;
-  }
-`;
-
-export const UserName = styled.span`
-  font-size: 16px;
-  font-weight: 600;
-  color: #333;
-  white-space: nowrap;
-
-  /* Notebook */
-  @media (max-width: 1199px) and (min-width: 992px) {
-    font-size: 15px;
-  }
-
-  /* Planshet */
-  @media (max-width: 991px) and (min-width: 768px) {
-    font-size: 15px;
-  }
-
-  /* Telefon */
-  @media (max-width: 767px) {
-    font-size: 14px;
-  }
-
-  /* Kichik telefon */
-  @media (max-width: 480px) {
-    font-size: 13px;
-  }
-
-  /* Juda kichik telefon */
-  @media (max-width: 360px) {
-    font-size: 12px;
-  }
-`;
-
 export const SidebarToggleBtn = styled.button`
   background: #0b63ff;
   color: white;
@@ -437,40 +485,6 @@ export const SidebarToggleBtn = styled.button`
   }
 `;
 
-export const SidebarToggleIcon = styled.div`
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-  transform: ${({ sidebarOpen }) => (sidebarOpen ? 'rotate(0deg)' : 'rotate(180deg)')};
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  /* Desktop */
-  @media (min-width: 1200px) {
-    font-size: 1.3rem;
-  }
-
-  /* Notebook */
-  @media (max-width: 1199px) and (min-width: 992px) {
-    font-size: 1.25rem;
-  }
-
-  /* Planshet */
-  @media (max-width: 991px) and (min-width: 768px) {
-    font-size: 1.2rem;
-  }
-
-  /* Telefon */
-  @media (max-width: 767px) {
-    font-size: 1.2rem;
-  }
-
-  /* Kichik telefon */
-  @media (max-width: 480px) {
-    font-size: 1.15rem;
-  }
-`;
-
 export const Overlay = styled.div`
   position: fixed;
   top: 0;
@@ -492,153 +506,6 @@ export const Overlay = styled.div`
   }
 
   @media (max-width: 767px) {
-    display: ${({ sidebarOpen }) => (sidebarOpen ? 'block' : 'none')};
-  }
-`;
-
-export const CollapseButton = styled.button`
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #5b6dff;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 15px;
-
-  &:hover {
-    background: #5b6dff;
-    color: white;
-    transform: scale(1.1);
-  }
-
-  @media (min-width: 1200px) {
-    font-size: 1.5rem;
-  }
-
-  @media (max-width: 1199px) and (min-width: 992px) {
-    font-size: 1.4rem;
-  }
-
-  @media (max-width: 991px) and (min-width: 768px) {
-    font-size: 1.3rem;
-  }
-
-  @media (max-width: 767px) {
-    display: none;
-  }
-`;
-
-export const MobileMenuButton = styled.button`
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  color: #333;
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.1);
-  }
-
-  @media (max-width: 767px) {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  @media (max-width: 480px) {
-    font-size: 1.4rem;
-    padding: 6px;
-  }
-`;
-
-export const HeaderLeftSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15px;
-
-  /* Telefon */
-  @media (max-width: 767px) {
-    gap: 12px;
-    flex: 1;
-  }
-
-  /* Kichik telefon */
-  @media (max-width: 480px) {
-    gap: 10px;
-  }
-`;
-
-export const HeaderRightSection = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15px;
-
-  /* Telefon */
-  @media (max-width: 767px) {
-    gap: 12px;
-  }
-
-  /* Kichik telefon */
-  @media (max-width: 480px) {
-    gap: 8px;
-  }
-`;
-
-export const NotificationBadge = styled.div`
-  position: absolute;
-  top: -5px;
-  right: -5px;
-  background: #ff4757;
-  color: white;
-  border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  font-weight: bold;
-
-  /* Telefon */
-  @media (max-width: 767px) {
-    width: 16px;
-    height: 16px;
-    font-size: 9px;
-  }
-`;
-
-export const ProfileImage = styled.div`
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #0b63ff, #8b5cf6);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-weight: bold;
-  font-size: 14px;
-
-  /* Telefon */
-  @media (max-width: 767px) {
-    width: 32px;
-    height: 32px;
-    font-size: 13px;
-  }
-
-  /* Kichik telefon */
-  @media (max-width: 480px) {
-    width: 30px;
-    height: 30px;
-    font-size: 12px;
+    display: block;
   }
 `;

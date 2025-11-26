@@ -1,13 +1,16 @@
 import React from 'react'
-import './frilace.css'
+import './frilace.styles.js'
+import { FrilanceSection, Wrapper } from './frilace.styles.js'
+import lock from './assets/lock.png'
 
 const Frilace = () => {
   return (
-    <div>
-      <main>
-      <h1>Frilace</h1>
-      </main>
-    </div>
+    <FrilanceSection>
+      <Wrapper>
+        <img src={lock} alt="" />
+        <h2>Freelance hozircha yopiq</h2>
+      </Wrapper>
+    </FrilanceSection>
   )
 }
 
