@@ -1,40 +1,30 @@
 import styled from "styled-components";
 
+/* MENTORS SECTION WRAPPER */
 export const MentorsSection = styled.div`
+  width: ${(props) => (props.sidebarOpen ? "calc(100% - 270px)" : "100%")};
   max-width: 1280px;
-  position: relative;
-  left: 50px;
-  top: 150px;
-  width: 100%;
-  padding: 40px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  padding-top: 120px;
   border-radius: 20px;
+  box-shadow: 0 0 18px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
   position: relative;
-  box-shadow: 0 0 18px rgba(0,0,0,0.08);
-
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: center;  
+  top: 160px;
 
-  /* === RESPONSIVE WITH SIDEBAR === */
-
-  @media (max-width: 1000px) {
-    width: calc(100% - 220px);
-    left: 220px;
+  @media (max-width: 1300px) {
+    width: 100%;
   }
 
   @media (max-width: 900px) {
-    /* Sidebar yo‘q deb ishlaymiz */
     width: 100%;
-    left: 0;
+    padding: 30px 15px;
     border-radius: 0;
-    margin-top: 20px;
-    position: relative;
-    top: 0;
-  }
-
-  @media (max-width: 600px) {
-    padding: 25px 15px;
+    padding-top: 80px;
   }
 `;
 
@@ -42,14 +32,28 @@ export const MentorsSection = styled.div`
 export const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
+
+  /* Buttons va carousel uchun markazlashgan layout */
+  button {
+    font-size: 30px;
+    border: 1px solid #0b63ff;
+    background: none;
+    cursor: pointer;
+    color: #0b63ff;
+    padding: 5px;
+    border-radius: 10px;
+    transition: 0.3s ease;
+  }
+
+  button:hover {
+    background: rgba(11, 99, 255, 0.1);
+  }
 
   @media (max-width: 850px) {
     flex-direction: column;
-    text-align: center;
-    gap: 25px;
   }
 `;
 
@@ -79,6 +83,7 @@ export const Left = styled.div`
 
   @media (max-width: 850px) {
     width: 100%;
+    text-align: center;
     h1 { font-size: 32px; }
     h2 { font-size: 22px; }
     p { font-size: 15px; }
@@ -93,6 +98,11 @@ export const Phones = styled.div`
   a {
     font-size: 24px;
     color: #0b63ff;
+    transition: 0.3s ease;
+  }
+
+  a:hover {
+    color: #0646b5;
   }
 
   @media (max-width: 850px) {
@@ -129,5 +139,39 @@ export const Right = styled.div`
     img {
       max-width: 230px;
     }
+  }
+`;
+
+/* CAROUSEL BOX */
+export const CarouselBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  overflow: hidden;
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  /* Slide animation */
+  .slideNext {
+    animation: slideNext 0.6s ease forwards;
+  }
+
+  .slidePrev {
+    animation: slidePrev 0.6s ease forwards;
+  }
+
+  @keyframes slideNext {
+    0% { transform: translateX(100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+  }
+
+  @keyframes slidePrev {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
   }
 `;

@@ -82,6 +82,7 @@ const Projects = ({ sidebarOpen }) => {
                 color: "#0b63ff",
                 padding: "5px",
                 borderRadius: "10px",
+                display: "flex",
               }}
             >
               <IoMdArrowBack />
@@ -149,6 +150,7 @@ const Projects = ({ sidebarOpen }) => {
                 color: "#0b63ff",
                 padding: "5px",
                 borderRadius: "10px",
+                display:"flex"
               }}
             >
               <IoArrowForwardOutline />

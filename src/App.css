@@ -1,166 +1,123 @@
+/* Global styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --radius-5: 5px;
-  --primary-color: #2563eb;
-  --color-white: white;
-  --color-black: black;
-  --gradient-background: linear-gradient(135deg, #1e3a8a, #2563eb, #3b82f6);
-  --font-size-18: 18px;
-  --font-size-20: 20px;
-  --font-size-25: 25px;
-  --font-size-30: 30px;
-  --font-size-40: 40px;
-  --font-size-50: 50px;
-  --font-weight-400: 400;
-  --font-weight-500: 500;
-  --font-weight-600: 600;
-  --font-weight-700: 700;
-  --font-weight-800: 800;
-  --font-weight-900: 900;
-
-
-  --gap-10: 10px;
-  --gap-20: 20px;
-  --gap-30: 30px;
-  --gap-40: 40px;
-  --gap-50: 50px;
-}
-
-button,
-i,
-svg,
-li {
-  cursor: pointer;
-}
-
-
-ul, ol {
+ul,ol{
   list-style: none;
-}
 
-a {
+}
+a{
   text-decoration: none;
 }
 
-
-.main-container {
-  transition: all 0.3s ease;
-  position: absolute;
-  left: 140px;
-  width: calc(100% - 270px);
+body, html, #root {
+  width: 100%;
+  height: 100%;
+  font-family: Arial, sans-serif;
 }
 
-.main-container.sidebar-collapsed {
-  left: -80px;
-  width: calc(100% - 80px);
+:root {
+  --primary-color: #2563eb;
+  --color-white: #fff;
+  --color-black: #000;
+  --radius-5: 5px;
+
+  /* Sidebar widths */
+  --sidebar-width-open-1200: 280px;
+  --sidebar-width-collapsed-1200: 80px;
+  --sidebar-width-open-1024: 240px;
+  --sidebar-width-collapsed-1024: 80px;
+  --sidebar-width-open-900: 220px;
+  --sidebar-width-collapsed-900: 70px;
 }
 
-@media (max-width: 1300px) {
-  .main-container {
-    left: 240px;
-    width: calc(100% - 240px);
-  }
+/* App layout */
+.app-layout {
+  display: flex;
+}
 
-  .main-container.sidebar-collapsed {
-    left: 80px;
-    width: calc(100% - 80px);
+/* Page content */
+.page-content {
+  flex: 1;
+  transition: margin-left 0.3s ease, padding 0.3s ease;
+  padding: 40px;
+}
+
+/* Desktop >1200px */
+@media (min-width: 1200px) {
+  .page-content {
+    margin-left: var(--sidebar-width-open-1200);
+  }
+  .page-content.sidebar-collapsed {
+    margin-left: var(--sidebar-width-collapsed-1200);
   }
 }
 
-@media (max-width: 1024px) {
-  .main-container {
-    left: 200px;
-    width: calc(100% - 200px);
+/* 1024px - 1199px */
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .page-content {
+    margin-left: var(--sidebar-width-open-1024);
   }
-
-  .main-container.sidebar-collapsed {
-    left: 70px;
-    width: calc(100% - 70px);
+  .page-content.sidebar-collapsed {
+    margin-left: var(--sidebar-width-collapsed-1024);
   }
 }
 
-@media (max-width: 900px) {
-  .main-container {
-    left: 0;
-    width: 100%;
+/* 900px - 1023px */
+@media (max-width: 1023px) and (min-width: 900px) {
+  .page-content {
+    margin-left: var(--sidebar-width-open-900);
+  }
+  .page-content.sidebar-collapsed {
+    margin-left: var(--sidebar-width-collapsed-900);
+  }
+}
+
+/* 768px - 899px */
+@media (max-width: 899px) and (min-width: 768px) {
+  .page-content {
+    margin-left: 200px;
+  }
+  .page-content.sidebar-collapsed {
+    margin-left: 65px;
+  }
+  .page-content {
     padding: 25px;
-    border-radius: 0;
-  }
-
-  .main-container.sidebar-collapsed {
-    left: 0;
-    width: 100%;
   }
 }
 
-@media (max-width: 768px) {
-
-  .main-container,
-  .main-container.sidebar-collapsed {
-    left: 0;
+/* Mobile <768px */
+@media (max-width: 767px) {
+  .page-content,
+  .page-content.sidebar-collapsed {
+    margin-left: 0;
     width: 100%;
     padding: 20px;
     top: 70px;
   }
 }
 
+/* Small mobile <480px */
 @media (max-width: 480px) {
-
-  .main-container,
-  .main-container.sidebar-collapsed {
+  .page-content,
+  .page-content.sidebar-collapsed {
     padding: 15px;
     top: 60px;
   }
 }
 
+/* Extra small mobile <350px */
 @media (max-width: 350px) {
-
-  .main-container,
-  .main-container.sidebar-collapsed {
+  .page-content,
+  .page-content.sidebar-collapsed {
     padding: 10px;
   }
 }
 
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 97vh;
-  margin: 0;
-}
-
-@media (min-width: 1200px) {
-  .page-content {
-    margin-left: 280px;
-  }
-}
-
-@media (max-width: 1199px) and (min-width: 992px) {
-  .page-content {
-    margin-left: 250px;
-  }
-}
-
-@media (max-width: 991px) and (min-width: 768px) {
-  .page-content {
-    margin-left: 220px;
-  }
-}
-
-@media (max-width: 767px) {
-  .page-content {
-    margin-left: 0 !important;
-    padding: 0 !important;
-    width: 100% !important;
-  }
-}
-
+/* Scrollbar styling */
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -176,4 +133,14 @@ main {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
+}
+
+/* Optional: main tag for vertical centering */
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 97vh;
+  margin: 0;
 }

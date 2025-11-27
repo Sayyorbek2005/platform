@@ -1,30 +1,25 @@
 import styled from "styled-components";
 
 export const HomeSection = styled.div`
-  max-width: 1280px;
-  top: 70px;
-  width: 100%;
+  width: ${(props) => (props.sidebarOpen ? "calc(100% - 270px)" : "calc(100% - 80px)")};
+  max-width: 1280px; 
+  margin: 0 auto; 
   padding: 40px;
-  border-radius: 20px;
+  padding-top: 110px; 
+  min-height: 100vh;
+  box-sizing: border-box;
   transition: all 0.3s ease;
-  position: relative;
+  /* background-color: red; */
+
+  @media (max-width: 1300px) {
+    width: calc(100% - 80px); /
+  }
 
   @media (max-width: 900px) {
-    top: 70px;
-    border-radius: 0;
-    padding: 25px;
-  }
-
-  @media (max-width: 768px) {
-    top: 20px;
+    width: 100%;
+    margin-left: 0;
     padding: 20px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 15px;
-  }
-  @media (max-width: 350px) {
-    padding: 10px;
+    padding-top: 100px;
   }
 `;
 
@@ -32,8 +27,8 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+  overflow-x: hidden;
 
-  /* === START SECTION === */
   .start {
     width: 100%;
     display: flex;
@@ -43,84 +38,47 @@ export const Wrapper = styled.div`
     padding: 30px;
     border-radius: 10px;
     gap: 30px;
-    transition: all 0.3s ease;
 
     .left {
       display: flex;
       flex-direction: column;
       gap: 10px;
       max-width: 700px;
-      width: 100%;
+      margin: 0 auto; /* O'rtaga markazlash */
 
       h1 {
         font-size: 36px;
         font-weight: 700;
         color: #333;
-
-        @media (max-width: 900px) {
-          text-align: center;
-          font-size: 30px;
-        }
-
-        @media (max-width: 600px) {
-          font-size: 26px;
-        }
-
-        @media (max-width: 350px) {
-          font-size: 22px;
-        }
       }
 
       p {
         color: grey;
-        line-height: 1.6;
         font-size: 16px;
-
-        @media (max-width: 900px) {
-          text-align: center;
-          font-size: 14px;
-        }
-
-        @media (max-width: 480px) {
-          font-size: 13px;
-        }
-
-        @media (max-width: 350px) {
-          font-size: 12px;
-        }
+        line-height: 1.6;
       }
     }
 
     .right img {
       width: 220px;
       object-fit: contain;
-
-      @media (max-width: 900px) {
-        width: 180px;
-      }
-
-      @media (max-width: 600px) {
-        width: 150px;
-      }
-
-      @media (max-width: 480px) {
-        width: 120px;
-      }
-
-      @media (max-width: 350px) {
-        width: 100px;
-      }
+      margin: 0 auto; /* O'rtaga markazlash */
     }
 
     @media (max-width: 900px) {
       flex-direction: column;
       text-align: center;
-      gap: 20px;
-      padding: 25px;
+
+      .right img {
+        width: 180px;
+      }
+
+      .left {
+        max-width: 100%;
+      }
     }
   }
 
-  /* === END SECTION === */
   .end {
     display: flex;
     flex-direction: column;
@@ -131,108 +89,136 @@ export const Wrapper = styled.div`
       font-size: 32px;
       font-weight: 700;
       color: #333;
-
-      @media (max-width: 900px) {
-        font-size: 28px;
-      }
-
-      @media (max-width: 600px) {
-        font-size: 24px;
-      }
-
-      @media (max-width: 350px) {
-        font-size: 20px;
-      }
     }
 
     .TexnologuesBoxs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
       padding: 10px;
+      justify-items: center; /* Elementlarni o'rtaga markazlash */
+    }
 
-      @media (max-width: 768px) {
-        gap: 15px;
+    @media (max-width: 1100px) {
+      .TexnologuesBoxs {
+        grid-template-columns: repeat(2, 1fr);
       }
+    }
 
-      @media (max-width: 480px) {
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
+    @media (max-width: 650px) {
+      .TexnologuesBoxs {
+        grid-template-columns: 1fr;
       }
     }
 
     .TexnologuesBox {
       display: flex;
       flex-direction: column;
-      width: 280px;
       background-color: #fff;
       border-radius: 15px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       transition: all 0.3s ease;
       cursor: pointer;
+      width: 100%; /* Box kengligi grid ichida moslashadi */
 
       img {
         width: 100%;
         height: 200px;
         object-fit: cover;
-
-        @media (max-width: 768px) {
-          height: 160px;
-        }
-
-        @media (max-width: 480px) {
-          height: 140px;
-        }
-
-        @media (max-width: 350px) {
-          height: 120px;
-        }
       }
 
       p {
         padding: 12px;
         font-weight: 600;
         font-size: 18px;
-
-        @media (max-width: 768px) {
-          font-size: 16px;
-        }
-
-        @media (max-width: 480px) {
-          font-size: 15px;
-        }
-
-        @media (max-width: 350px) {
-          font-size: 13px;
-        }
       }
 
       &:hover {
         transform: translateY(-5px);
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       }
+    }
+  }
 
-      @media (max-width: 1300px) {
-        width: 260px;
+  .tech-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+
+    h2 {
+      font-size: 28px;
+      font-weight: 700;
+      text-align: center;
+      color: #333;
+    }
+
+    .videos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+
+      .box {
+        width: 300px;
+        height: 200px;
+        background-color: #ff4d4d;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+
+        &:hover {
+          transform: translateY(-5px);
+        }
+      }
+    }
+
+    .lock {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
+      img {
+        width: 50px;
+        height: 50px;
       }
 
-      @media (max-width: 1024px) {
-        width: 240px;
+      p {
+        color: grey;
+        font-size: 18px;
       }
 
-      @media (max-width: 768px) {
-        width: 45%;
-      }
+      a {
+        font-size: 18px;
+        color: #2563eb;
+        text-decoration: none;
 
-      @media (max-width: 480px) {
-        width: 90%;
+        &:hover {
+          text-decoration: underline;
+        }
       }
+    }
 
-      @media (max-width: 350px) {
-        width: 100%;
+    button {
+      margin-top: 25px;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: none;
+      background: #333;
+      color: #fff;
+      cursor: pointer;
+      font-size: 16px;
+
+      &:hover {
+        background: #555;
       }
     }
   }

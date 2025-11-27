@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+
+// Components
 import Header from "./components/header/Header";
 import Sidebar from "./components/sidebar/SideBar";
+
+// Pages
 import Home from "./pages/home/Home";
 import Projects from "./pages/projects/Projects";
 import Contact from "./pages/contact/Contact";
@@ -12,79 +16,65 @@ import JoinUs from "./pages/joinUs/JoinUs";
 import Reklamalar from "./pages/reklamalar/Reklamalar";
 import Frilace from "./pages/frilace/Frilace";
 import NotFound from "./pages/notfound/NotFound";
+
+// Styles
 import "./App.css";
 import { ToastContainer } from "react-toastify";
 
 const App = () => {
+  // Sidebar state
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
   const location = useLocation();
 
+  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       const mobile = window.innerWidth < 768;
       setIsMobile(mobile);
-      
-      if (mobile) {
-        setSidebarOpen(false);
-      } else {
-        setSidebarOpen(true);
-      }
+      setSidebarOpen(!mobile); // Mobile: closed, Desktop: open
     };
 
-    handleResize();
     window.addEventListener("resize", handleResize);
+    handleResize(); // initial check
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Close sidebar on route change for mobile
   useEffect(() => {
     if (isMobile) {
       setSidebarOpen(false);
     }
   }, [location.pathname, isMobile]);
 
+  // Toggle sidebar
   const handleSidebarToggle = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
-  const getContentMargin = () => {
-    if (isMobile) return "0";
-
-    if (window.innerWidth >= 1200) {
-      return sidebarOpen ? "280px" : "80px";
-    } else if (window.innerWidth >= 992) {
-      return sidebarOpen ? "250px" : "70px";
-    } else if (window.innerWidth >= 768) {
-      return sidebarOpen ? "220px" : "65px";
-    }
-
-    return "0";
-  };
-
-  // Barcha sahifalarga uzatiladigan common props
+  // Common props to pass to pages
   const commonProps = {
     sidebarOpen,
     onToggle: handleSidebarToggle,
-    isMobile
+    isMobile,
   };
 
   return (
     <div className="app-layout">
+      {/* Sidebar */}
       <Sidebar
         isOpen={sidebarOpen}
         onToggle={handleSidebarToggle}
         isMobile={isMobile}
       />
 
+      {/* Header */}
       <Header {...commonProps} />
 
-      <div
-        className="page-content"
-        style={{
-          marginLeft: getContentMargin(),
-          transition: "margin-left 0.3s ease",
-        }}
-      >
+      {/* Page content */}
+      <div className={`page-content ${sidebarOpen ? "" : "sidebar-collapsed"}`}>
         <ToastContainer />
         <Routes>
           <Route path="/" element={<Home {...commonProps} />} />

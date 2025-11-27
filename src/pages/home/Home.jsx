@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import "./Home.styles.js";
 import { HomeSection, Wrapper } from "./Home.styles.js";
+
 import logo from "./assets/logo.png";
 import html from "./assets/html.png";
 import cssImg from "./assets/Css.png";
@@ -22,22 +22,13 @@ const technologu = [
   { name: "Sass", img: sas, title: "Sass video darsliklari" },
   { name: "JavaScript", img: jsScript, title: "JavaScript video darsliklari" },
   { name: "React", img: react, title: "React video darsliklari" },
-  {
-    name: "redux toolkit",
-    img: reduxToolkit,
-    title: "Redux Toolkit video darsliklari",
-  },
-  {
-    name: "TypeScript",
-    img: tupeScript,
-    title: "TypeScript video darsliklari",
-  },
+  { name: "redux toolkit", img: reduxToolkit, title: "Redux Toolkit video darsliklari" },
+  { name: "TypeScript", img: tupeScript, title: "TypeScript video darsliklari" },
   { name: "Vue js", img: vueJs, title: "Vue.js video darsliklari" },
   { name: "C++", img: c, title: "C++ video darsliklari" },
   { name: "Python", img: pyhon, title: "Python video darsliklari" },
 ];
 
-// Har bir texnologiyaga tegishli 3 ta video box
 const videosByTech = {
   Html: ["HTML Video 1", "HTML Video 2", "HTML Video 3"],
   Css: ["CSS Video 1", "CSS Video 2", "CSS Video 3"],
@@ -54,150 +45,66 @@ const videosByTech = {
 
 const Home = ({ sidebarOpen }) => {
   const [selectedTech, setSelectedTech] = useState(null);
-  const selectedTitle = technologu.find(
-    (tech) => tech.name === selectedTech
-  )?.title;
+  const selectedTitle = technologu.find((tech) => tech.name === selectedTech)?.title;
 
   return (
-    <section
-      className={`main-container ${!sidebarOpen ? "sidebar-collapsed" : ""}`}
-    >
-      <div className="content-wrapper">
-        <HomeSection>
-          <Wrapper>
-            {selectedTech ? (
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  marginTop: "50px",
-                  gap: "30px",
-                }}
-              >
-                <h2>{selectedTitle}</h2>
-                {selectedTech && videosByTech[selectedTech] && (
-                  <div
-                    className="videos"
-                    style={{
-                      display: "flex",
-                      gap: "20px",
-                      justifyContent: "center",
-                      flexWrap: "wrap",
-                      marginTop: "20px",
-                    }}
-                  >
-                    {videosByTech[selectedTech].map((video, index) => (
-                      <div
-                        key={index}
-                        className="box"
-                        style={{
-                          width: "300px",
-                          height: "200px",
-                          backgroundColor: "red",
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                          color: "#fff",
-                          fontWeight: "bold",
-                          borderRadius: "8px",
-                          fontSize: "16px",
-                        }}
-                      >
-                        {video}
-                      </div>
-                    ))}
-                  </div>
-                )}
-                <div
-                  className="lock"
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    alignItems: "center",
-                    gap: "10px",
-                  }}
-                >
-                  <img src={lock} alt="" />
-                  <p style={{ color: "grey", fontSize: "20px" }}>
-                    Boshqalarini ko'rish uchun pastdagi havolaga o'ting
-                  </p>
-                  <a
-                    href="https://t.me/furure_programmers"
-                    style={{ fontSize: "20px" }}
-                  >
-                    Telegram
-                  </a>
-                </div>
-                <button
-                  onClick={() => setSelectedTech(null)}
-                  style={{
-                    marginTop: "25px",
-                    padding: "10px 20px",
-                    borderRadius: "8px",
-                    border: "none",
-                    background: "#333",
-                    color: "#fff",
-                    cursor: "pointer",
-                  }}
-                >
-                  Orqaga
-                </button>
+    <section className={`main-container ${!sidebarOpen ? "sidebar-collapsed" : ""}`}>
+      <HomeSection sidebarOpen={sidebarOpen}>
+        <Wrapper>
+          {selectedTech ? (
+            <div className="tech-details">
+              <h2>{selectedTitle}</h2>
+              <div className="videos">
+                {videosByTech[selectedTech].map((video, index) => (
+                  <div key={index} className="box">{video}</div>
+                ))}
               </div>
-            ) : (
-              <>
-                <div className="start">
-                  <div className="left">
-                    <h1>IT SAF - dasturlash kurslari</h1>
-                    <p>
-                      “Biz zamonaviy veb-saytlar yaratishga ixtisoslashgan
-                      frontend dasturchilarimiz. Biz UI/UX, dizayn va
-                      funksionallikka e’tibor beramiz, shuningdek SSL, domenlar,
-                      xosting va SEO bilan ishlaymiz. To‘liq moslashuvchan
-                      (responsive) veb-saytlar yaratamiz.””
-                    </p>
-                  </div>
-                  <div className="right">
-                    <img src={logo} alt="" style={{ width: "400px" }} />
-                  </div>
+
+              <div className="lock">
+                <img src={lock} alt="lock" />
+                <p>Boshqalarini ko'rish uchun pastdagi havolaga o'ting</p>
+                <a href="https://t.me/furure_programmers" target="_blank" rel="noreferrer">
+                  Telegram
+                </a>
+              </div>
+
+              <button onClick={() => setSelectedTech(null)}>Orqaga</button>
+            </div>
+          ) : (
+            <>
+              <div className="start">
+                <div className="left">
+                  <h1>IT SAF - dasturlash kurslari</h1>
+                  <p>
+                    Biz zamonaviy veb-saytlar yaratishga ixtisoslashgan frontend dasturchilarimiz.
+                    UI/UX, dizayn va funksionallikka e’tibor beramiz, shuningdek SSL, domenlar,
+                    xosting va SEO bilan ishlaymiz. To‘liq moslashuvchan (responsive) veb-saytlar yaratamiz.
+                  </p>
                 </div>
-                <div className="end">
-                  <h1>Kurslar</h1>
-                  <div className="TexnologuesBoxs">
-                    {technologu.map((tech, index) => (
-                      <div
-                        key={index}
-                        className="TexnologuesBox"
-                        onClick={() => setSelectedTech(tech.name)}
-                        style={{ cursor: "pointer" }}
-                      >
-                        <img
-                          src={tech.img}
-                          alt={tech.name}
-                          style={{
-                            width: "100%",
-                            height: "200px",
-                            objectFit: "cover",
-                          }}
-                        />
-                        <p
-                          style={{
-                            padding: "10px",
-                            fontWeight: "600",
-                            fontSize: "19px",
-                          }}
-                        >
-                          {tech.name}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                <div className="right">
+                  <img src={logo} alt="logo" />
                 </div>
-              </>
-            )}
-          </Wrapper>
-        </HomeSection>
-      </div>
+              </div>
+
+              <div className="end">
+                <h1>Kurslar</h1>
+                <div className="TexnologuesBoxs">
+                  {technologu.map((tech, index) => (
+                    <div
+                      key={index}
+                      className="TexnologuesBox"
+                      onClick={() => setSelectedTech(tech.name)}
+                    >
+                      <img src={tech.img} alt={tech.name} />
+                      <p>{tech.name}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </>
+          )}
+        </Wrapper>
+      </HomeSection>
     </section>
   );
 };
