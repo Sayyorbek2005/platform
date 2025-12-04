@@ -9,10 +9,10 @@ export const HomeSection = styled.div`
   min-height: 100vh;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  /* background-color: red; */
+  width: 100%;
 
   @media (max-width: 1300px) {
-    width: calc(100% - 80px); /
+    width: calc(100% - 80px);
   }
 
   @media (max-width: 900px) {
@@ -44,7 +44,7 @@ export const Wrapper = styled.div`
       flex-direction: column;
       gap: 10px;
       max-width: 700px;
-      margin: 0 auto; /* O'rtaga markazlash */
+      margin: 0 auto;
 
       h1 {
         font-size: 36px;
@@ -62,7 +62,7 @@ export const Wrapper = styled.div`
     .right img {
       width: 220px;
       object-fit: contain;
-      margin: 0 auto; /* O'rtaga markazlash */
+      margin: 0 auto;
     }
 
     @media (max-width: 900px) {
@@ -86,7 +86,7 @@ export const Wrapper = styled.div`
     text-align: center;
 
     h1 {
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 700;
       color: #333;
     }
@@ -96,7 +96,7 @@ export const Wrapper = styled.div`
       grid-template-columns: repeat(3, 1fr);
       gap: 25px;
       padding: 10px;
-      justify-items: center; /* Elementlarni o'rtaga markazlash */
+      justify-items: center;
     }
 
     @media (max-width: 1100px) {
@@ -120,7 +120,7 @@ export const Wrapper = styled.div`
       overflow: hidden;
       transition: all 0.3s ease;
       cursor: pointer;
-      width: 100%; /* Box kengligi grid ichida moslashadi */
+      width: 100%;
 
       img {
         width: 100%;
@@ -146,12 +146,38 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 30px;
+    position: relative;
+    padding-top: 40px;
+    /* 🔹 BACK ICON STYLE */
+    .back {
+      /* font-size: 32px; */
+      position: absolute;
+      top: 0;
+      left: 10px;
+      cursor: pointer;
+      color: #333;
+      transition: 0.2s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* background-color: red; */
+      border-radius: 10px;
+      padding: 0px 10px;
+      /* border: 1px solid black; */
+
+      .back-btn{
+        font-size: 35px;
+        font-weight: 300;
+        color: #0b63ff;
+      }
+      p{
+        font-size: 20px;
+      }
+    }
 
     h2 {
-      font-size: 28px;
-      font-weight: 700;
       text-align: center;
-      color: #333;
+      /* color: #333; */
     }
 
     .videos {
@@ -194,6 +220,7 @@ export const Wrapper = styled.div`
       p {
         color: grey;
         font-size: 18px;
+        text-align: center;
       }
 
       a {

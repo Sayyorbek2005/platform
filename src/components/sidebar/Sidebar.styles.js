@@ -7,9 +7,7 @@ export const SidebarContainer = styled.aside`
   left: 0;
   height: 100vh;
   width: ${({ isOpen, isMobile }) => {
-    if (isMobile) {
-      return isOpen ? "350px" : "0";
-    }
+    if (isMobile) return isOpen ? "350px" : "0";
     return isOpen ? "280px" : "80px";
   }};
   background-color: #ffffff;
@@ -21,28 +19,19 @@ export const SidebarContainer = styled.aside`
   transition: all 0.3s ease;
   overflow: hidden;
 
-  /* Desktop (1200px+) */
   @media (min-width: 1200px) {
     width: ${({ isOpen }) => (isOpen ? "280px" : "80px")};
   }
-
-  /* Notebook (992px - 1199px) */
   @media (max-width: 1199px) and (min-width: 992px) {
     width: ${({ isOpen }) => (isOpen ? "250px" : "70px")};
   }
-
-  /* Planshet (768px - 991px) */
   @media (max-width: 991px) and (min-width: 768px) {
     width: ${({ isOpen }) => (isOpen ? "220px" : "65px")};
   }
-
-  /* Telefon (767px va kichik) */
   @media (max-width: 767px) {
     width: ${({ isOpen }) => (isOpen ? "350px" : "0")};
     transform: ${({ isOpen }) => (isOpen ? "translateX(0)" : "translateX(-100%)")};
   }
-
-  /* Kichik telefon (480px va kichik) */
   @media (max-width: 480px) {
     width: ${({ isOpen }) => (isOpen ? "320px" : "0")};
   }
@@ -51,15 +40,15 @@ export const SidebarContainer = styled.aside`
 export const Logo = styled.div`
   text-align: center;
   padding: 25px 0;
+
   img {
     width: ${({ isOpen, isMobile }) => {
       if (isMobile && isOpen) return "160px";
-      return isOpen ? "140px" : "50px";
+      return isOpen ? "140px" : "70px";
     }};
     transition: width 0.3s ease;
   }
 
-  /* Planshet va telefon */
   @media (max-width: 991px) {
     padding: 20px 0;
     img {
@@ -70,7 +59,6 @@ export const Logo = styled.div`
     }
   }
 
-  /* Telefon */
   @media (max-width: 767px) {
     padding: 20px 0;
     img {
@@ -88,13 +76,11 @@ export const Menu = styled.ul`
   gap: 6px;
   flex: 1;
 
-  /* Planshet */
   @media (max-width: 991px) and (min-width: 768px) {
     padding: 0 10px;
     gap: 5px;
   }
 
-  /* Telefon */
   @media (max-width: 767px) {
     padding: 0 15px;
     gap: 8px;
@@ -137,13 +123,11 @@ export const MenuLink = styled(Link)`
     border-radius: 6px;
   }
 
-  /* Planshet */
   @media (max-width: 991px) and (min-width: 768px) {
     padding: 10px 14px;
     gap: 12px;
   }
 
-  /* Telefon */
   @media (max-width: 767px) {
     padding: 14px 18px;
     gap: 16px;
@@ -158,13 +142,11 @@ export const Icon = styled.div`
   justify-content: center;
   min-width: 30px;
 
-  /* Planshet */
   @media (max-width: 991px) and (min-width: 768px) {
     font-size: 20px;
     min-width: 28px;
   }
 
-  /* Telefon */
   @media (max-width: 767px) {
     font-size: 24px;
     min-width: 32px;
@@ -172,11 +154,23 @@ export const Icon = styled.div`
 `;
 
 export const Text = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* 🔹 space-between */
+  gap: 8px;
+  width: 100%;
   opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
   white-space: nowrap;
   transition: opacity 0.3s ease;
 
-  /* Telefon */
+  span {
+    flex: 1; /* text bo‘sh joyni egallaydi */
+  }
+
+  img {
+    flex-shrink: 0; /* icon qisqarmaydi */
+  }
+
   @media (max-width: 767px) {
     opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
     font-size: 16px;
@@ -191,13 +185,11 @@ export const SocialIconsContainer = styled.div`
   border-top: 1px solid #f1f1f1;
   background-color: #ffffff;
 
-  /* Planshet */
   @media (max-width: 991px) and (min-width: 768px) {
     gap: 12px;
     padding: 15px 0;
   }
 
-  /* Telefon */
   @media (max-width: 767px) {
     gap: 16px;
     padding: 20px 0;
@@ -222,14 +214,12 @@ export const SocialIconLink = styled.a`
     transform: translateY(-15%);
   }
 
-  /* Planshet */
   @media (max-width: 991px) and (min-width: 768px) {
     width: 36px;
     height: 36px;
     font-size: 16px;
   }
 
-  /* Telefon */
   @media (max-width: 767px) {
     width: 42px;
     height: 42px;

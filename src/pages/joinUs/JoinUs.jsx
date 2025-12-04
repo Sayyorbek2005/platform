@@ -28,74 +28,31 @@ import { Pagination, Navigation, Autoplay } from "swiper/modules";
 
 const JoinUs = ({ sidebarOpen }) => {
   const [swiperRef, setSwiperRef] = useState(null);
+
+  // 🔥 phone o‘rnida city ishlayapti
   const [formData, setFormData] = useState({
     name: "",
-    phone: "+998",
+    city: "",
     avatar: null,
   });
+
   const [avatarPreview, setAvatarPreview] = useState(null);
   const [showImagePreview, setShowImagePreview] = useState(false);
+
   const [slides, setSlides] = useState([
     { id: 1, type: "simple", content: "Slayd 1" },
     { id: 2, type: "simple", content: "Slayd 2" },
     { id: 3, type: "simple", content: "Slayd 3" },
   ]);
+
   const fileInputRef = useRef(null);
 
   let appendNumber = slides.length + 1;
   let prependNumber = 0;
 
-  const prepend2 = () => {
-    const newSlides = [
-      {
-        id: --prependNumber,
-        type: "simple",
-        content: `Slide ${prependNumber}`,
-      },
-      {
-        id: --prependNumber,
-        type: "simple",
-        content: `Slide ${prependNumber}`,
-      },
-    ];
-    setSlides((prev) => [...newSlides, ...prev]);
-  };
-
-  const prepend = () => {
-    const newSlide = {
-      id: --prependNumber,
-      type: "simple",
-      content: `Slide ${prependNumber}`,
-    };
-    setSlides((prev) => [newSlide, ...prev]);
-  };
-
-  const append = () => {
-    const newSlide = {
-      id: ++appendNumber,
-      type: "simple",
-      content: `Slide ${appendNumber}`,
-    };
-    setSlides((prev) => [...prev, newSlide]);
-  };
-
-  const append2 = () => {
-    const newSlides = [
-      { id: ++appendNumber, type: "simple", content: `Slide ${appendNumber}` },
-      { id: ++appendNumber, type: "simple", content: `Slide ${appendNumber}` },
-    ];
-    setSlides((prev) => [...prev, ...newSlides]);
-  };
-
   const handleInputChange = (e) => {
-    let value = e.target.value;
     const name = e.target.name;
-
-    if (name === "phone") {
-      value = value.replace(/[^\d+]/g, "");
-      if (!value.startsWith("+998")) value = "+998";
-      if (value.length > 13) value = value.slice(0, 13);
-    }
+    const value = e.target.value;
 
     setFormData((prev) => ({
       ...prev,
@@ -134,31 +91,17 @@ const JoinUs = ({ sidebarOpen }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!formData.name.trim() || !formData.phone.trim()) {
+    // 🔥 validatsiya shahar bo‘yicha
+    if (!formData.name.trim() || !formData.city.trim()) {
       toast.error("❌ Iltimos, barcha maydonlarni to'ldiring!");
       return;
-    }
-
-    if (formData.phone.length !== 13) {
-      toast.error("📞 Telefon raqam to'liq emas!");
-      return;
-    }
-
-    let finalAvatar = formData.avatar;
-    let avatarFileName = "";
-
-    if (finalAvatar && formData.phone !== "+998") {
-      const phoneFileName = formData.phone.replace(/\+/g, "");
-      const fileExtension = finalAvatar.name.split(".").pop();
-      avatarFileName = `${phoneFileName}.${fileExtension}`;
     }
 
     const newMemberData = {
       id: Date.now(),
       name: formData.name,
-      phone: formData.phone,
+      city: formData.city,
       avatar: avatarPreview,
-      avatarFileName: avatarFileName,
       timestamp: new Date().toLocaleString("uz-UZ"),
     };
 
@@ -172,7 +115,7 @@ const JoinUs = ({ sidebarOpen }) => {
 
     toast.success(`✅ ${formData.name} muvaffaqiyatli qo'shildi!`);
 
-    setFormData({ name: "", phone: "+998", avatar: null });
+    setFormData({ name: "", city: "", avatar: null });
     setAvatarPreview(null);
   };
 
@@ -185,8 +128,8 @@ const JoinUs = ({ sidebarOpen }) => {
           <main>
             <JoinUsContainer>
               <SwiperContainer>
-                <h2 style={{ marginBottom: "20px", color: "#333" }}>
-                  Manipulation Demo
+                <h2 style={{fontSize:"35px", color:"#0b63ff"}}>
+                  Manipulyatsiya demo
                 </h2>
 
                 <Swiper
@@ -194,14 +137,9 @@ const JoinUs = ({ sidebarOpen }) => {
                   slidesPerView={3}
                   centeredSlides={true}
                   spaceBetween={30}
-                  pagination={{
-                    type: "fraction",
-                  }}
+                  pagination={{ type: "fraction" }}
                   navigation={true}
-                  autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false,
-                  }}
+                  autoplay={{ delay: 3000, disableOnInteraction: false }}
                   modules={[Pagination, Navigation, Autoplay]}
                   className="mySwiper"
                 >
@@ -234,17 +172,6 @@ const JoinUs = ({ sidebarOpen }) => {
                                   marginBottom: "10px",
                                 }}
                               />
-                              {slide.data.avatarFileName && (
-                                <div
-                                  style={{
-                                    fontSize: "10px",
-                                    color: "#888",
-                                    marginTop: "5px",
-                                  }}
-                                >
-                                  📁 {slide.data.avatarFileName}
-                                </div>
-                              )}
                             </div>
                           ) : (
                             <div
@@ -265,15 +192,12 @@ const JoinUs = ({ sidebarOpen }) => {
                               {slide.data.name.charAt(0).toUpperCase()}
                             </div>
                           )}
-                          <h3
-                            style={{
-                              margin: "5px 0",
-                              color: "#333",
-                              fontSize: "16px",
-                            }}
-                          >
+
+                          <h3 style={{ margin: "5px 0", color: "#333" }}>
                             {slide.data.name}
                           </h3>
+
+                          {/* 🔥 Shahar chiqariladi */}
                           <p
                             style={{
                               margin: "3px 0",
@@ -281,14 +205,10 @@ const JoinUs = ({ sidebarOpen }) => {
                               fontSize: "12px",
                             }}
                           >
-                            {slide.data.phone}
+                            {slide.data.city}
                           </p>
-                          <small
-                            style={{
-                              color: "#999",
-                              fontSize: "10px",
-                            }}
-                          >
+
+                          <small style={{ color: "#999", fontSize: "10px" }}>
                             {slide.data.timestamp}
                           </small>
                         </div>
@@ -315,6 +235,8 @@ const JoinUs = ({ sidebarOpen }) => {
                 </Swiper>
               </SwiperContainer>
 
+              {/* -------- Form -------- */}
+
               <FormWrapper>
                 <Form onSubmit={handleSubmit}>
                   <h3 style={{ marginBottom: "20px", color: "#333" }}>
@@ -329,7 +251,6 @@ const JoinUs = ({ sidebarOpen }) => {
                       accept="image/*"
                     />
                     <AvatarLabel
-                      htmlFor="avatar"
                       hasImage={!!avatarPreview}
                       imageUrl={avatarPreview}
                       onClick={handleAvatarClick}
@@ -340,10 +261,9 @@ const JoinUs = ({ sidebarOpen }) => {
                   </AvatarContainer>
 
                   <InputGroup>
-                    <Label htmlFor="name">Ismingiz</Label>
+                    <Label>Ismingiz</Label>
                     <Input
                       type="text"
-                      id="name"
                       name="name"
                       placeholder="Ismingizni kiriting"
                       value={formData.name}
@@ -353,13 +273,12 @@ const JoinUs = ({ sidebarOpen }) => {
                   </InputGroup>
 
                   <InputGroup>
-                    <Label htmlFor="phone">Telefon raqamingiz</Label>
+                    <Label>Shahringiz</Label>
                     <Input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      placeholder="+998-(__)-___-____"
-                      value={formData.phone}
+                      type="text"
+                      name="city"
+                      placeholder="Shahringizni kiriting"
+                      value={formData.city}
                       onChange={handleInputChange}
                       required
                     />
@@ -376,18 +295,7 @@ const JoinUs = ({ sidebarOpen }) => {
                 </ImagePreview>
               )}
 
-              <ToastContainer
-                position="top-right"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
+              <ToastContainer position="top-right" autoClose={3000} theme="light" />
             </JoinUsContainer>
           </main>
         </div>

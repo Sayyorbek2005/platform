@@ -105,7 +105,7 @@ const Header = ({ sidebarOpen, onToggle, isMobile }) => {
                 <SearchIcon />
                 <input 
                   type="text" 
-                  placeholder="Qidirmoqchi bo'lgan bo'limni kiriting..." 
+                  placeholder="Bo‘limni qidirish..." 
                   value={searchQuery}
                   onChange={handleSearch}
                   onFocus={handleInputFocus}

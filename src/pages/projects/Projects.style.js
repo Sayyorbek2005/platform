@@ -1,13 +1,16 @@
 import styled from 'styled-components';
 
 export const ConteinerProjects = styled.section`
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 60px 20px;
-  position: absolute;
-  left: 300px;
-  top: 70px;
-  width: calc(100% - 300px);
+  width: ${(props) => (props.sidebarOpen ? "calc(100% - 270px)" : "calc(100% - 80px)")};
+  max-width: 1280px; 
+  margin: 0 auto; 
+  padding: 40px;
+  padding-top: 110px; 
+  min-height: 100vh;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  width: 100%;
+
   
 
   /* Planshet (768px - 1024px) */
@@ -23,7 +26,7 @@ export const ConteinerProjects = styled.section`
     width: 100%;
     left: 0;
     padding: 40px 20px;
-    margin-top: 60px;
+    margin-top: 30px;
   }
 
   /* Telefon (320px - 576px) */
@@ -285,7 +288,6 @@ export const TechnologyCard = styled.div`
   }
   
   &:hover .tech-image-wrapper {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
     transform: scale(1.1);
     font-size: 2rem;
     color: white;
@@ -768,7 +770,7 @@ export const WhatICanBuildSection = styled.div`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
   }
   
   h2 {

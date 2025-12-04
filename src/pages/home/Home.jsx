@@ -15,6 +15,8 @@ import reduxToolkit from "./assets/redux tuld kid.png";
 import vueJs from "./assets/vue js.png";
 import lock from "./assets/icons8-lock-50.png";
 
+import { MdKeyboardArrowLeft } from "react-icons/md";
+
 const technologu = [
   { name: "Html", img: html, title: "HTML video darsliklari" },
   { name: "Css", img: cssImg, title: "CSS video darsliklari" },
@@ -49,14 +51,24 @@ const Home = ({ sidebarOpen }) => {
 
   return (
     <section className={`main-container ${!sidebarOpen ? "sidebar-collapsed" : ""}`}>
-      <HomeSection sidebarOpen={sidebarOpen}>
+      <HomeSection sidebarOpen={sidebarOpen}> 
         <Wrapper>
           {selectedTech ? (
             <div className="tech-details">
-              <h2>{selectedTitle}</h2>
+              <div className="back" onClick={() => setSelectedTech(null)}>
+              <MdKeyboardArrowLeft 
+                className="back-btn"
+              />
+              <p>Orqaga</p>
+              </div>
+
+              <h2 style={{fontSize:"35px", color:"#0b63ff"}}>{selectedTitle}</h2>
+
               <div className="videos">
                 {videosByTech[selectedTech].map((video, index) => (
-                  <div key={index} className="box">{video}</div>
+                  <div key={index} className="box">
+                    {video}
+                  </div>
                 ))}
               </div>
 
@@ -67,14 +79,14 @@ const Home = ({ sidebarOpen }) => {
                   Telegram
                 </a>
               </div>
-
-              <button onClick={() => setSelectedTech(null)}>Orqaga</button>
+{/* 
+              <button onClick={() => setSelectedTech(null)}>Orqaga</button> */}
             </div>
           ) : (
             <>
               <div className="start">
                 <div className="left">
-                  <h1>IT SAF - dasturlash kurslari</h1>
+                  <h1 style={{fontSize:"35px", color:"#0b63ff"}}>IT SAF - dasturlash kurslari</h1>
                   <p>
                     Biz zamonaviy veb-saytlar yaratishga ixtisoslashgan frontend dasturchilarimiz.
                     UI/UX, dizayn va funksionallikka e’tibor beramiz, shuningdek SSL, domenlar,

@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { Left, MentorsSection, Phones, Right, Wrapper } from "./Mentors.style";
+import {
+  Left,
+  MentorsMax,
+  MentorsSection,
+  Phones,
+  Right,
+  Wrapper,
+} from "./Mentors.style";
 import { FiPhone } from "react-icons/fi";
 import { PiTelegramLogoLight } from "react-icons/pi";
 import { IoMdArrowBack } from "react-icons/io";
@@ -150,7 +157,7 @@ const Projects = ({ sidebarOpen }) => {
                 color: "#0b63ff",
                 padding: "5px",
                 borderRadius: "10px",
-                display:"flex"
+                display: "flex",
               }}
             >
               <IoArrowForwardOutline />

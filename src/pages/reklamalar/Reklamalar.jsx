@@ -44,7 +44,7 @@ const Reklamalar = () => {
   return (
     <ReklamalarSection>
       <Wrapper>
-        <h1>Reklamalar</h1>
+        <h1 style={{fontSize:"35px", color:"#0b63ff"}}>Reklamalar</h1>
 
         <Grid>
           {/* Yuqoridagi 2ta box */}

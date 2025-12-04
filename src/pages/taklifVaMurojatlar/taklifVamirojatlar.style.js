@@ -2,39 +2,26 @@ import styled from "styled-components";
 
 export const AdviseSection = styled.div`
   max-width: 1280px;
-  width: ${({ sidebarOpen }) => (sidebarOpen ? "calc(100% - 270px)" : "100%")};
+  width: ${(props) => (props.sidebarOpen ? "calc(100% - 270px)" : "100%")};
+  margin-left: ${(props) => (props.sidebarOpen ? "270px" : "0px")};
+  margin-top: 70px; /* Header balandligi */
   padding: 20px;
-  position: absolute;
-  height: 80%;
-  top: 125px;
-  left: ${({ sidebarOpen }) => (sidebarOpen ? "270px" : "0")};
-  border-radius: 20px;
-  transition: all 0.3s ease;
+
+  min-height: calc(100vh - 70px); /* Scroll chiqarmaydi */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: 0.3s;
   background-color: #f9fafb;
   box-sizing: border-box;
-  left: 100px;
 
-  /* 📱 1300px dan kichik ekranlarda sidebar yopiladi */
   @media (max-width: 1300px) {
-    width: calc(100% - 40px); /* chap va o‘ngdan 20px oraliq */
-    left: 20px;
-    right: 20px;
-    position: relative;
-    top: 100px;
-    height: auto;
-  }
-
-  /* 📱 768px dan kichiklarda to‘liq kenglik */
-  @media (max-width: 768px) {
     width: 100%;
-    left: 0;
-    top: 90px;
-    border-radius: 0;
-    padding: 15px;
+    margin-left: 0;
   }
 
-  @media (max-width: 480px) {
-    top: 70px;
+  @media (max-width: 900px) {
     padding: 10px;
   }
 `;
@@ -44,25 +31,19 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 50px;
-  padding: 50px;
+
+  padding: 40px;
   border-radius: 20px;
-  box-shadow: 0px 0px 19px 2px rgba(117, 139, 155, 0.15);
   background: white;
-  transition: 0.3s;
+  box-shadow: 0px 0px 19px 2px rgba(117, 139, 155, 0.15);
 
-  @media (max-width: 1024px) {
-    gap: 30px;
-    padding: 30px;
-  }
-
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     flex-direction: column;
-    gap: 25px;
-    padding: 20px;
+    gap: 30px;
+    padding: 25px;
   }
 
-  @media (max-width: 480px) {
-    gap: 20px;
+  @media (max-width: 600px) {
     padding: 15px;
   }
 `;
@@ -71,52 +52,29 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  text-align: left;
 
   h1 {
     font-size: 40px;
-    line-height: 1.2;
+
+    @media (max-width: 600px) {
+      font-size: 28px;
+    }
   }
 
   p {
     color: grey;
     font-size: 16px;
+
+    @media (max-width: 600px) {
+      font-size: 14px;
+    }
   }
 
   img {
     width: 300px;
-    margin-top: 10px;
-  }
 
-  @media (max-width: 1024px) {
-    h1 {
-      font-size: 32px;
-    }
-    img {
-      width: 250px;
-    }
-  }
-
-  @media (max-width: 768px) {
-    text-align: center;
-    h1 {
-      font-size: 28px;
-    }
-    p {
-      font-size: 15px;
-    }
-    img {
-      width: 220px;
-      margin: 0 auto;
-    }
-  }
-
-  @media (max-width: 480px) {
-    h1 {
-      font-size: 24px;
-    }
-    img {
-      width: 180px;
+    @media (max-width: 600px) {
+      width: 240px;
     }
   }
 `;
@@ -127,6 +85,10 @@ export const Right = styled.div`
   gap: 20px;
   width: 400px;
 
+  @media (max-width: 600px) {
+    width: 100%;
+  }
+
   .inputs {
     position: relative;
     width: 100%;
@@ -135,13 +97,19 @@ export const Right = styled.div`
   input,
   textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     font-size: 16px;
     border-radius: 10px;
     border: 1px solid #ccc;
     outline: none;
-    transition: all 0.3s ease;
     background-color: white;
+
+    @media (max-width: 600px) {
+      font-size: 14px;
+    }
+  }
+
+  textarea {
     resize: none;
   }
 
@@ -152,55 +120,37 @@ export const Right = styled.div`
 
   .inputs p {
     position: absolute;
-    left: 10px;
-    top: 10px;
-    color: gray;
-    transition: all 0.3s ease;
+    left: 12px;
+    top: 12px;
+    color: #777;
     background-color: white;
     pointer-events: none;
+    transition: 0.3s;
   }
 
   .inputs input:focus + p,
   .inputs textarea:focus + p {
-    top: -18.5px;
+    top: -17px;
     color: #0b63ff;
-    padding: 5px;
+    padding: 2px 6px;
+    font-size: 12px;
   }
 
   button {
-    padding: 10px 15px;
+    padding: 12px;
     width: 60%;
+    align-self: center;
+
     border-radius: 10px;
     border: none;
     background-color: #0b63ff;
     color: white;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s;
     font-size: 16px;
-    align-self: center;
   }
 
   button:hover {
     background-color: #084bcc;
-  }
-
-  @media (max-width: 1024px) {
-    width: 350px;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    button {
-      width: 100%;
-    }
-  }
-
-  @media (max-width: 480px) {
-    gap: 15px;
-    input,
-    textarea {
-      font-size: 14px;
-      padding: 8px;
-    }
   }
 `;

@@ -70,7 +70,7 @@ export const ReklamalarSection = styled.div`
   width: calc(100% - 270px);
   padding: 20px;
   position: absolute;
-  top: 100px;
+  top: 110px;
   left: 270px;
   height: 90%;
   display: flex;

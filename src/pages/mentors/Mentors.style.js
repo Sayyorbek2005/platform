@@ -1,63 +1,67 @@
 import styled from "styled-components";
 
-/* MENTORS SECTION WRAPPER */
+/* MAIN SECTION */
 export const MentorsSection = styled.div`
-  width: ${(props) => (props.sidebarOpen ? "calc(100% - 270px)" : "100%")};
+  width: ${(props) => (props.sidebarOpen ? "calc(100% - 270px)" : "80%")};
   max-width: 1280px;
   margin: 0 auto;
   padding: 40px 20px;
-  padding-top: 120px;
   border-radius: 20px;
-  box-shadow: 0 0 18px rgba(0,0,0,0.08);
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: center;  
-  top: 160px;
+  align-items: center;
+  top: 230px;
 
   @media (max-width: 1300px) {
-    width: 100%;
+    width: 80%;
   }
 
   @media (max-width: 900px) {
     width: 100%;
     padding: 30px 15px;
     border-radius: 0;
-    padding-top: 80px;
+    top: 150px;
   }
 `;
 
-/* CONTENT WRAPPER */
+/* WRAPPER */
 export const Wrapper = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 20px;
 
-  /* Buttons va carousel uchun markazlashgan layout */
+  /* 900px ↓ TAGMA-TAG */
+  @media (max-width: 900px) {
+    flex-direction: column;
+    width: 100%;
+    gap: 25px;
+  }
+
   button {
     font-size: 30px;
     border: 1px solid #0b63ff;
     background: none;
     cursor: pointer;
     color: #0b63ff;
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 10px;
     transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   button:hover {
     background: rgba(11, 99, 255, 0.1);
   }
-
-  @media (max-width: 850px) {
-    flex-direction: column;
-  }
 `;
 
-/* LEFT TEXT SECTION */
+/* LEFT SIDE */
 export const Left = styled.div`
   width: 50%;
   display: flex;
@@ -67,6 +71,7 @@ export const Left = styled.div`
   h1 {
     font-size: 38px;
     color: #444;
+    font-weight: bold;
   }
 
   h2 {
@@ -81,36 +86,46 @@ export const Left = styled.div`
     line-height: 1.5;
   }
 
-  @media (max-width: 850px) {
+  /* 900px ↓ TAGMA-TAG */
+  @media (max-width: 900px) {
     width: 100%;
     text-align: center;
-    h1 { font-size: 32px; }
-    h2 { font-size: 22px; }
-    p { font-size: 15px; }
+
+    h1 {
+      font-size: 32px;
+    }
+    h2 {
+      font-size: 23px;
+    }
+    p {
+      font-size: 15px;
+    }
   }
 `;
 
-/* PHONE ICONS */
+/* PHONE + TELEGRAM ICONS */
 export const Phones = styled.div`
   display: flex;
   gap: 20px;
+  margin-top: 10px;
 
   a {
-    font-size: 24px;
+    font-size: 25px;
     color: #0b63ff;
-    transition: 0.3s ease;
+    transition: 0.3s;
   }
 
   a:hover {
-    color: #0646b5;
+    color: #064ec2;
   }
 
-  @media (max-width: 850px) {
+  /* 900px ↓ center bo‘ladi */
+  @media (max-width: 900px) {
     justify-content: center;
   }
 `;
 
-/* RIGHT IMAGE SECTION */
+/* RIGHT SIDE */
 export const Right = styled.div`
   width: 50%;
   display: flex;
@@ -121,42 +136,36 @@ export const Right = styled.div`
     max-width: 380px;
     border-radius: 14px;
     object-fit: cover;
-    transition: 0.3s ease;
+    transition: 0.3s;
   }
 
   img:hover {
     transform: scale(1.04);
   }
 
-  @media (max-width: 850px) {
+  /* 900px ↓ TAGMA-TAG */
+  @media (max-width: 900px) {
     width: 100%;
+    margin-top: 20px;
+
     img {
-      max-width: 300px;
+      max-width: 100%;
     }
   }
 
   @media (max-width: 480px) {
     img {
-      max-width: 230px;
+      max-width: 90%;
     }
   }
 `;
 
-/* CAROUSEL BOX */
-export const CarouselBox = styled.div`
+/* SLIDER BOX (ANIMATIONS) */
+export const MentorsMax = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 40px;
-  width: 100%;
-  overflow: hidden;
+  justify-content: center;
 
-  @media (max-width: 850px) {
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  /* Slide animation */
   .slideNext {
     animation: slideNext 0.6s ease forwards;
   }
@@ -166,12 +175,24 @@ export const CarouselBox = styled.div`
   }
 
   @keyframes slideNext {
-    0% { transform: translateX(100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 
   @keyframes slidePrev {
-    0% { transform: translateX(-100%); opacity: 0; }
-    100% { transform: translateX(0); opacity: 1; }
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
   }
 `;

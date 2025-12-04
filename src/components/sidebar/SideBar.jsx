@@ -1,3 +1,4 @@
+// Sidebar.jsx
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import imgLogo from "./assets/logotwo.png";
@@ -44,16 +45,15 @@ const links = [
   { icon: <IoDocumentText />, label: "Taklif va Murojatlar", path: "/taklifvamurojatlar" },
   { icon: <HiUserGroup />, label: "Bizga qo'shiling", path: "/joinus" },
   { icon: <MdContactMail />, label: "Contact", path: "/contact" },
-
   { 
-    icon: <MdWork />, 
+    icon: <MdWork />,
     label: (
-      <div style={{ display: "flex",width:"180px", alignItems: "center", gap: "6px", justifyContent: "space-between"}}>
-        Freelance
-        <img src={lock} width="18" alt="lock" style={{color: "blue"}} />
-      </div>
+      <Text isOpen={true}>
+        <span>Freelance</span>
+        <img src={lock} width="18" alt="lock" />
+      </Text>
     ),
-    path: "/frilace" 
+    path: "/frilace"
   },
 ];
 
@@ -77,7 +77,6 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
   return (
     <>
       <SidebarContainer isOpen={isOpen} isMobile={isMobile}>
-
         {isMobile && isOpen && <CloseButton onClick={onToggle}>✕</CloseButton>}
 
         <Logo isOpen={isOpen}>
@@ -99,12 +98,7 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
                   }}
                 >
                   <Icon>{icon}</Icon>
-
-                  {/* TEXT yoki TEXT + LOCK */}
-                  <Text isOpen={isOpen}>
-                    {label}
-                  </Text>
-
+                  <Text isOpen={isOpen}>{label}</Text>
                 </MenuLink>
               </MenuItem>
             );
@@ -113,7 +107,7 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
 
         {isOpen && (
           <SocialIconsContainer>
-            {socialLinks.map(({ icon, url, name }) => (
+            {socialLinks.map(({ icon, url }) => (
               <SocialIconLink key={url} href={url} target="_blank">
                 {icon}
               </SocialIconLink>

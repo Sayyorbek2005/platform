@@ -347,7 +347,7 @@ export const UploadBtn = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  box-shadow: 0 6px 15px rgba(11, 99, 255, 0.4);
+  /* box-shadow: 0 6px 15px rgba(11, 99, 255, 0.4); */
   transition: all 0.3s ease;
   white-space: nowrap;
 
@@ -434,7 +434,6 @@ export const SidebarToggleBtn = styled.button`
   justify-content: center;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(11, 99, 255, 0.4);
   flex-shrink: 0;
 
   &:hover {

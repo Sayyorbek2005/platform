@@ -2,34 +2,29 @@ import styled from "styled-components";
 
 export const ChatSection = styled.div`
   max-width: 1280px;
-  width: calc(100% - 270px);
+  width: ${(props) => (props.sidebarOpen ? "calc(100% - 270px)" : "100%")};
+  margin-left: ${(props) => (props.sidebarOpen ? "270px" : "0")};
   padding: 20px;
-  position: absolute;
-  height: 80%;
+  position: relative;
+  min-height: calc(100vh - 70px); /* Header balandligini hisobga oladi */
   display: flex;
   align-items: center;
   justify-content: center;
   transition: 0.3s;
-  background-color: red;
+  box-sizing: border-box;
+  top: 40px;
+  /* background-color: red; */
 
-  /* 🧠 1300px dan past bo‘lsa — markazga joylash */
   @media (max-width: 1300px) {
     width: 100%;
-    left: 0;
-    top: 70px;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin-left: 0;
+    min-height: calc(100vh - 110px);
   }
 
-  /* 📱 1000px dan past bo‘lsa — ustma-ust joylash */
   @media (max-width: 1000px) {
-    flex-direction: column;
-    height: auto;
-    position: static;
-    top: 0;
     padding: 10px;
+    flex-direction: column;
+    min-height: calc(100vh - 110px);
   }
 `;
 
@@ -42,6 +37,8 @@ export const Wrapper = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 19px 2px rgba(117, 139, 155, 0.15);
   transition: 0.3s;
+  flex-wrap: wrap;
+  box-sizing: border-box;
 
   @media (max-width: 1000px) {
     flex-direction: column;
@@ -51,6 +48,7 @@ export const Wrapper = styled.div`
 
   @media (max-width: 600px) {
     padding: 20px;
+    gap: 20px;
   }
 
   .left {
@@ -97,6 +95,15 @@ export const Wrapper = styled.div`
           opacity: 0;
           transition: 0.3s;
           margin-bottom: 5px;
+        }
+        button{
+          padding: 10px 30px;
+          border-radius: 10px;
+          border: none;
+          background-color: blue;
+        }
+        a{
+          color: white;
         }
       }
     }

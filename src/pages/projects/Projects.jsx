@@ -44,7 +44,7 @@ import Allimg6 from "./assets/2025-10-23_19-34-42.png";
 
 // Technology images
 import HTML from "./assets/icons8-html-240.png";
-import CSS from "./assets/logo_CSS.png";
+import CSS from "./assets/icons8-css-240.png";
 import Bootstrap from "./assets/icons8-bootstrap-240.png";
 import Sass from "./assets/icons8-sass-240.png";
 import JavaScript from "./assets/icons8-javascript-240.png";
@@ -279,9 +279,9 @@ const Projects = ({ sidebarOpen }) => {
         <main>
           <ConteinerProjects>
             <div className="header-section">
-              <h1>Mening loyihalarim</h1>
+              <h1 style={{fontSize:"35px", color:"#0b63ff"}}>Bizning loyihalarimiz</h1>
               <p className="subtitle">
-                Mening ijodiy ishlarim va texnik yechimlarimni kashf eting
+                Bizning ijodiy ishlarimizni va texnik yechimlarimni kashf eting
               </p>
             </div>
 
@@ -351,7 +351,7 @@ const Projects = ({ sidebarOpen }) => {
                 {filter === "all" && (
                   <>
                     <TechnologiesSection>
-                      <h2>Texnologiyalarim</h2>
+                      <h2 style={{fontSize:"35px", color:"#0b63ff"}}>Texnologiyalarimiz</h2>
                       <p className="tech-subtitle">
                         Ajoyib veb tajribalarni yaratishda zamonaviy vositalar va
                         texnologiyalar
@@ -373,7 +373,7 @@ const Projects = ({ sidebarOpen }) => {
                     </TechnologiesSection>
 
                     <WhatICanBuildSection>
-                      <h2>Nimalarni yaratishim mumkin</h2>
+                      <h2 style={{fontSize:"35px", color:"#0b63ff"}}>Qanday xizmatlar ko'rsata olamiz</h2>
                       <p className="build-subtitle">
                         Biznesingiz ehtiyojlariga moslashtirilgan maxsus yechimlar
                       </p>
