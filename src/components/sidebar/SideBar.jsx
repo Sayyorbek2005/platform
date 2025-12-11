@@ -16,7 +16,6 @@ import {
   FaTelegramPlane,
   FaInstagram,
   FaYoutube,
-  FaLinkedinIn,
   FaGithub,
 } from "react-icons/fa";
 import { MdContactMail, MdWork } from "react-icons/md";
@@ -42,7 +41,7 @@ const links = [
   { icon: <FaUserTie />, label: "O'qituvchilar", path: "/mentors" },
   { icon: <FaBullhorn />, label: "Reklamalar", path: "/reklamalar" },
   { icon: <IoChatbubbleOutline />, label: "Chat", path: "/chat" },
-  { icon: <IoDocumentText />, label: "Taklif va Murojatlar", path: "/taklifvamurojatlar" },
+  { icon: <IoDocumentText />, label: "Taklif va Fikirlar", path: "/taklifvamurojatlar" },
   { icon: <HiUserGroup />, label: "Bizga qo'shiling", path: "/joinus" },
   { icon: <MdContactMail />, label: "Contact", path: "/contact" },
   { 
@@ -58,11 +57,10 @@ const links = [
 ];
 
 const socialLinks = [
-  { icon: <FaTelegramPlane />, url: "https://web.telegram.org/k/", name: "Telegram" },
-  { icon: <FaInstagram />, url: "https://www.instagram.com/", name: "Instagram" },
-  { icon: <FaYoutube />, url: "https://www.youtube.com/", name: "YouTube" },
-  { icon: <FaLinkedinIn />, url: "https://www.linkedin.com/", name: "LinkedIn" },
-  { icon: <FaGithub />, url: "https://github.com/", name: "GitHub" },
+  { icon: <FaTelegramPlane />, url: "https://t.me/It_Saf_samarqand", name: "Telegram" },
+  { icon: <FaInstagram />, url: "https://www.instagram.com/it_saf_sam/", name: "Instagram" },
+  { icon: <FaYoutube />, url: "https://www.youtube.com/@It_Saf", name: "YouTube" },
+  { icon: <FaGithub />, url: "https://github.com/Sayyorbek2005", name: "GitHub" },
 ];
 
 const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {

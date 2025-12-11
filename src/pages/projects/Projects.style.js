@@ -6,7 +6,7 @@ export const ConteinerProjects = styled.section`
   margin: 0 auto; 
   padding: 40px;
   padding-top: 110px; 
-  min-height: 100vh;
+  /* min-height: 100vh; */
   box-sizing: border-box;
   transition: all 0.3s ease;
   width: 100%;

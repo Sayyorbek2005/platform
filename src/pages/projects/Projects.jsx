@@ -1,3 +1,4 @@
+// Projects.jsx
 import React, { useState } from "react";
 import {
   ConteinerProjects,
@@ -22,7 +23,7 @@ import {
   BuildItemCard,
   BuildItemIcon,
 } from "./Projects.style";
-import {
+import { 
   FaGithub,
   FaShoppingCart,
   FaCommentDots,
@@ -30,8 +31,12 @@ import {
   FaFileCode,
   FaDesktop,
   FaBuilding,
+  FaUserFriends,
+  FaSitemap,
+  FaEdit
 } from "react-icons/fa";
 import { SiVercel } from "react-icons/si";
+
 import { FiCode, FiSearch, FiGlobe, FiShield, FiServer } from "react-icons/fi";
 
 // Project images
@@ -70,12 +75,11 @@ const technologies = [
   { name: "Python", img: Python },
 ];
 
-// What I Can Build
 const whatICanBuild = [
   {
-    name: "Onlayn do‘kon",
+    name: "Onlayn do'kon",
     icon: <FaShoppingCart />,
-    description: "To‘liq funktsional elektron tijorat saytlari",
+    description: "To'liq funktsional elektron tijorat saytlari",
   },
   {
     name: "Real vaqtli chat ilovasi",
@@ -104,17 +108,17 @@ const whatICanBuild = [
   },
   {
     name: "CRM tizimlari",
-    icon: <FaBuilding />,
+    icon: <FaUserFriends />,
     description: "Mijozlar bilan munosabatlarni boshqarish tizimlari",
   },
   {
     name: "Kompaniya portfoliosi",
-    icon: <FaBuilding />,
+    icon: <FaSitemap />,
     description: "Kompaniya loyihalari va xizmatlarini namoyish qilish",
   },
   {
     name: "Formalar dizayni",
-    icon: <FaBuilding />,
+    icon: <FaEdit />,
     description: "Foydalanuvchiga qulay formalar interfeysi",
   },
 ];
@@ -145,7 +149,7 @@ const projectData = {
     {
       id: 3,
       title: "Elektron tijorat platformasi",
-      desc: "To‘liq full-stack elektron tijorat yechimi – savatcha, to‘lovlar va admin panel bilan",
+      desc: "To'liq full-stack elektron tijorat yechimi – savatcha, to'lovlar va admin panel bilan",
       tags: ["React", "Node.js", "MongoDB", "Stripe"],
       img: Allimg3,
       github: "https://github.com/Mukhamadaliev/Platia.git",
@@ -192,7 +196,7 @@ const projectData = {
     {
       id: 8,
       title: "Admin Dashboard",
-      desc: "Diagrammalar va ma’lumot vizualizatsiyasi bilan moslashuvchan admin panel",
+      desc: "Diagrammalar va ma'lumot vizualizatsiyasi bilan moslashuvchan admin panel",
       tags: ["React", "Chart.js", "Material-UI"],
       img: Allimg2,
       github: "https://github.com/Mukhamadaliev/dashboard",
@@ -214,7 +218,7 @@ const projectData = {
     {
       id: 10,
       title: "Bulutli hosting xizmati",
-      desc: "Avtomatlashtirilgan funksiyalarga ega to‘liq hosting boshqaruv tizimi",
+      desc: "Avtomatlashtirilgan funksiyalarga ega to'liq hosting boshqaruv tizimi",
       tags: ["Hosting", "cPanel", "Automation", "DNS"],
       img: Allimg4,
       github: "https://github.com/Mukhamadaliev/hosting",
@@ -272,137 +276,128 @@ const Projects = ({ sidebarOpen }) => {
   ];
 
   return (
-    <section
-      className={`main-container ${!sidebarOpen ? "sidebar-collapsed" : ""}`}
-    >
-      <div className="content-wrapper">
-        <main>
-          <ConteinerProjects>
-            <div className="header-section">
-              <h1 style={{fontSize:"35px", color:"#0b63ff"}}>Bizning loyihalarimiz</h1>
-              <p className="subtitle">
-                Bizning ijodiy ishlarimizni va texnik yechimlarimni kashf eting
-              </p>
-            </div>
-
-            <FilterBar>
-              {categories.map((category) => (
-                <Button
-                  key={category.key}
-                  active={filter === category.key}
-                  onClick={() => setFilter(category.key)}
-                >
-                  <span className="btn-icon">{category.icon}</span>
-                  {category.label}
-                  <span className="project-count">{category.count}</span>
-                </Button>
-              ))}
-            </FilterBar>
-
-            {filteredProjects.length > 0 ? (
-              <>
-                <ProjectsGrid>
-                  {filteredProjects.map((project) => (
-                    <ProjectCard key={project.id} featured={project.featured}>
-                      <ProjectImage>
-                        <img src={project.img} alt={project.title} />
-
-                        <div className="image-overlay">
-                          <IconLinks>
-                            <IconLink
-                              href={project.github}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              title="Manba kodni ko‘rish"
-                            >
-                              <FaGithub size={18} />
-                            </IconLink>
-                            <IconLink
-                              href={project.demo}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              title="Jonli demo"
-                            >
-                              <SiVercel size={18} />
-                            </IconLink>
-                          </IconLinks>
-                        </div>
-
-                        {project.featured && (
-                          <div className="featured-badge">
-                            <span>⭐ Tavsiya etilgan</span>
-                          </div>
-                        )}
-                      </ProjectImage>
-
-                      <ProjectContent>
-                        <ProjectTitle>{project.title}</ProjectTitle>
-                        <ProjectDescription>{project.desc}</ProjectDescription>
-                        <Tags>
-                          {project.tags.map((tag, index) => (
-                            <Tag key={index}>{tag}</Tag>
-                          ))}
-                        </Tags>
-                      </ProjectContent>
-                    </ProjectCard>
-                  ))}
-                </ProjectsGrid>
-
-                {filter === "all" && (
-                  <>
-                    <TechnologiesSection>
-                      <h2 style={{fontSize:"35px", color:"#0b63ff"}}>Texnologiyalarimiz</h2>
-                      <p className="tech-subtitle">
-                        Ajoyib veb tajribalarni yaratishda zamonaviy vositalar va
-                        texnologiyalar
-                      </p>
-                      <TechnologiesGrid>
-                        {technologies.map((tech, index) => (
-                          <TechnologyCard key={index}>
-                            <div className="tech-image-wrapper">
-                              <img
-                                src={tech.img}
-                                alt={tech.name}
-                                className="tech-image"
-                              />
-                            </div>
-                            <p className="tech-name">{tech.name}</p>
-                          </TechnologyCard>
-                        ))}
-                      </TechnologiesGrid>
-                    </TechnologiesSection>
-
-                    <WhatICanBuildSection>
-                      <h2 style={{fontSize:"35px", color:"#0b63ff"}}>Qanday xizmatlar ko'rsata olamiz</h2>
-                      <p className="build-subtitle">
-                        Biznesingiz ehtiyojlariga moslashtirilgan maxsus yechimlar
-                      </p>
-                      <WhatICanBuildGrid>
-                        {whatICanBuild.map((item, index) => (
-                          <BuildItemCard key={index}>
-                            <BuildItemIcon>{item.icon}</BuildItemIcon>
-                            <h3>{item.name}</h3>
-                            <p>{item.description}</p>
-                          </BuildItemCard>
-                        ))}
-                      </WhatICanBuildGrid>
-                    </WhatICanBuildSection>
-                  </>
-                )}
-              </>
-            ) : (
-              <EmptyState>
-                <div className="empty-icon">
-                  <FiSearch size={60} />
-                </div>
-                <h3>Loyiha topilmadi</h3>
-                <p>Bu kategoriya uchun yangi loyihalar qo‘shilmoqda.</p>
-              </EmptyState>
-            )}
-          </ConteinerProjects>
-        </main>
+    <ConteinerProjects sidebarOpen={sidebarOpen}>
+      <div className="header-section">
+        <h1 style={{fontSize:"35px", color:"#0b63ff"}}>Bizning loyihalarimiz</h1>
+        <p className="subtitle">
+          Bizning ijodiy ishlarimizni va texnik yechimlarimni kashf eting
+        </p>
       </div>
-    </section>
+
+      <FilterBar>
+        {categories.map((category) => (
+          <Button
+            key={category.key}
+            active={filter === category.key}
+            onClick={() => setFilter(category.key)}
+          >
+            <span className="btn-icon">{category.icon}</span>
+            {category.label}
+            <span className="project-count">{category.count}</span>
+          </Button>
+        ))}
+      </FilterBar>
+
+      {filteredProjects.length > 0 ? (
+        <>
+          <ProjectsGrid>
+            {filteredProjects.map((project) => (
+              <ProjectCard key={project.id} featured={project.featured}>
+                <ProjectImage>
+                  <img src={project.img} alt={project.title} />
+                  <div className="image-overlay">
+                    <IconLinks>
+                      <IconLink
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Manba kodni ko'rish"
+                      >
+                        <FaGithub size={18} />
+                      </IconLink>
+                      <IconLink
+                        href={project.demo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Jonli demo"
+                      >
+                        <SiVercel size={18} />
+                      </IconLink>
+                    </IconLinks>
+                  </div>
+
+                  {project.featured && (
+                    <div className="featured-badge">
+                      <span>⭐ Tavsiya etilgan</span>
+                    </div>
+                  )}
+                </ProjectImage>
+
+                <ProjectContent>
+                  <ProjectTitle>{project.title}</ProjectTitle>
+                  <ProjectDescription>{project.desc}</ProjectDescription>
+                  <Tags>
+                    {project.tags.map((tag, index) => (
+                      <Tag key={index}>{tag}</Tag>
+                    ))}
+                  </Tags>
+                </ProjectContent>
+              </ProjectCard>
+            ))}
+          </ProjectsGrid>
+
+          {filter === "all" && (
+            <>
+              <TechnologiesSection>
+                <h2 style={{fontSize:"35px", color:"#0b63ff"}}>Texnologiyalarimiz</h2>
+                <p className="tech-subtitle">
+                  Ajoyib veb tajribalarni yaratishda zamonaviy vositalar va
+                  texnologiyalar
+                </p>
+                <TechnologiesGrid>
+                  {technologies.map((tech, index) => (
+                    <TechnologyCard key={index}>
+                      <div className="tech-image-wrapper">
+                        <img
+                          src={tech.img}
+                          alt={tech.name}
+                          className="tech-image"
+                        />
+                      </div>
+                      <p className="tech-name">{tech.name}</p>
+                    </TechnologyCard>
+                  ))}
+                </TechnologiesGrid>
+              </TechnologiesSection>
+
+              <WhatICanBuildSection>
+                <h2 style={{fontSize:"35px", color:"#0b63ff"}}>Qanday xizmatlar ko'rsata olamiz</h2>
+                <p className="build-subtitle">
+                  Biznesingiz ehtiyojlariga moslashtirilgan maxsus yechimlar
+                </p>
+                <WhatICanBuildGrid>
+                  {whatICanBuild.map((item, index) => (
+                    <BuildItemCard key={index}>
+                      <BuildItemIcon>{item.icon}</BuildItemIcon>
+                      <h3>{item.name}</h3>
+                      <p>{item.description}</p>
+                    </BuildItemCard>
+                  ))}
+                </WhatICanBuildGrid>
+              </WhatICanBuildSection>
+            </>
+          )}
+        </>
+      ) : (
+        <EmptyState>
+          <div className="empty-icon">
+            <FiSearch size={60} />
+          </div>
+          <h3>Loyiha topilmadi</h3>
+          <p>Bu kategoriya uchun yangi loyihalar qo'shilmoqda.</p>
+        </EmptyState>
+      )}
+    </ConteinerProjects>
   );
 };
 
