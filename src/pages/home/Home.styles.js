@@ -9,7 +9,6 @@ export const HomeSection = styled.div`
   min-height: 100vh;
   box-sizing: border-box;
   transition: all 0.3s ease;
-  width: 100%;
 
   @media (max-width: 1300px) {
     width: calc(100% - 80px);
@@ -114,6 +113,7 @@ export const Wrapper = styled.div`
     .TexnologuesBox {
       display: flex;
       flex-direction: column;
+      align-items: flex-start; /* Chapga yopishtirish */
       background-color: #fff;
       border-radius: 15px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -129,9 +129,21 @@ export const Wrapper = styled.div`
       }
 
       p {
-        padding: 12px;
+        padding: 10px 15px;
+        text-align: left; /* Chapga tekis */
+        margin: 0;
+      }
+
+      p:first-of-type {
+        font-size: 18px; /* Texnologiya nomi */
         font-weight: 600;
-        font-size: 18px;
+        color: #333;
+      }
+
+      .description {
+        font-size: 14px; /* Tavsif matni */
+        color: grey;
+        line-height: 1.6;
       }
 
       &:hover {
@@ -148,36 +160,31 @@ export const Wrapper = styled.div`
     gap: 30px;
     position: relative;
     padding-top: 40px;
-    /* 🔹 BACK ICON STYLE */
+
     .back {
-      /* font-size: 32px; */
       position: absolute;
       top: 0;
       left: 10px;
       cursor: pointer;
-      color: #333;
-      transition: 0.2s ease;
       display: flex;
-      justify-content: center;
       align-items: center;
-      /* background-color: red; */
-      border-radius: 10px;
-      padding: 0px 10px;
-      /* border: 1px solid black; */
+      gap: 5px;
 
-      .back-btn{
+      .back-btn {
         font-size: 35px;
-        font-weight: 300;
         color: #0b63ff;
       }
-      p{
+
+      p {
         font-size: 20px;
+        margin: 0;
       }
     }
 
     h2 {
       text-align: center;
-      /* color: #333; */
+      font-size: 35px;
+      color: #0b63ff;
     }
 
     .videos {
@@ -231,21 +238,6 @@ export const Wrapper = styled.div`
         &:hover {
           text-decoration: underline;
         }
-      }
-    }
-
-    button {
-      margin-top: 25px;
-      padding: 10px 20px;
-      border-radius: 8px;
-      border: none;
-      background: #333;
-      color: #fff;
-      cursor: pointer;
-      font-size: 16px;
-
-      &:hover {
-        background: #555;
       }
     }
   }

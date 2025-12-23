@@ -69,7 +69,7 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
 
   const handleLinkClick = (path) => {
     navigate(path);
-    if (isMobile) onToggle();
+    if (isMobile) onToggle(); // mobil qurilma bo'lsa sidebarni yopish
   };
 
   return (
@@ -77,8 +77,9 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
       <SidebarContainer isOpen={isOpen} isMobile={isMobile}>
         {isMobile && isOpen && <CloseButton onClick={onToggle}>✕</CloseButton>}
 
-        <Logo isOpen={isOpen}>
-          <img src={imgLogo} alt="Logo" />
+        {/* Logo bosilganda homega o'tadi */}
+        <Logo isOpen={isOpen} onClick={() => navigate("/")}>
+          <img src={imgLogo} alt="Logo" style={{ cursor: "pointer" }} />
         </Logo>
 
         <Menu>
@@ -106,13 +107,12 @@ const Sidebar = ({ isOpen = true, onToggle, isMobile }) => {
         {isOpen && (
           <SocialIconsContainer>
             {socialLinks.map(({ icon, url }) => (
-              <SocialIconLink key={url} href={url} target="_blank">
+              <SocialIconLink key={url} href={url} target="_blank" rel="noreferrer">
                 {icon}
               </SocialIconLink>
             ))}
           </SocialIconsContainer>
         )}
-
       </SidebarContainer>
 
       {isMobile && <Overlay isOpen={isOpen} onClick={onToggle} />}

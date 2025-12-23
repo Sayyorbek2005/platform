@@ -16,7 +16,7 @@ import {
 } from "./Header.styles";
 import { RiMenuFoldFill, RiMenuUnfoldFill } from "react-icons/ri";
 
-// Sizning sahifalaringiz uchun search ma'lumotlari
+// Search ma'lumotlari
 const searchData = [
   { id: 1, title: "Bosh sahifa", path: "/" },
   { id: 2, title: "Web Loyiha", path: "/projects" },
@@ -36,58 +36,47 @@ const Header = ({ sidebarOpen, onToggle, isMobile }) => {
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef(null);
 
-  // Inputdan tashqariga bosilganda search natijalarini yopish
+  // Tashqariga bosilganda yopish
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (searchRef.current && !searchRef.current.contains(event.target)) {
+    const handleClickOutside = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
         setShowResults(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Search funksiyasi
+  // Search
   const handleSearch = (e) => {
-    const query = e.target.value;
-    setSearchQuery(query);
+    const value = e.target.value;
+    setSearchQuery(value);
 
-    if (query.trim() === "") {
+    if (!value.trim()) {
       setSearchResults([]);
       setShowResults(false);
       return;
     }
 
-    const filteredResults = searchData.filter(item =>
-      item.title.toLowerCase().includes(query.toLowerCase())
+    const filtered = searchData.filter((item) =>
+      item.title.toLowerCase().includes(value.toLowerCase())
     );
 
-    setSearchResults(filteredResults);
+    setSearchResults(filtered);
     setShowResults(true);
   };
 
-  // Search natijasiga bosilganda
+  // Natijani bosganda
   const handleResultClick = (path) => {
-    // React Router bilan navigation
     navigate(path);
-    
-    setShowResults(false);
     setSearchQuery("");
+    setShowResults(false);
   };
 
-  // Inputga fokus bo'lganda
-  const handleInputFocus = () => {
-    if (searchQuery.trim() !== "" && searchResults.length > 0) {
-      setShowResults(true);
-    }
-  };
-
-  // Enter bosilganda birinchi natijani ochish
+  // Enter bosilganda
   const handleKeyPress = (e) => {
-    if (e.key === 'Enter' && searchResults.length > 0) {
+    if (e.key === "Enter" && searchResults.length > 0) {
       handleResultClick(searchResults[0].path);
     }
   };
@@ -97,47 +86,17 @@ const Header = ({ sidebarOpen, onToggle, isMobile }) => {
       <BackgroundHeader>
         <MaxWidth>
           <HeaderWrapper sidebarOpen={sidebarOpen}>
-            <div ref={searchRef} style={{ position: "relative" }}>
-              <InputContainer 
-                sidebarOpen={sidebarOpen}
-                className={showResults ? "search-active" : ""}
-              >
-                <SearchIcon />
-                <input 
-                  type="text" 
-                  placeholder="Bo‘limni qidirish..." 
-                  value={searchQuery}
-                  onChange={handleSearch}
-                  onFocus={handleInputFocus}
-                  onKeyPress={handleKeyPress}
-                />
-              </InputContainer>
 
-              {/* Search natijalari */}
-              {showResults && searchResults.length > 0 && (
-                <SearchResults sidebarOpen={sidebarOpen}>
-                  {searchResults.map((result) => (
-                    <SearchResultItem 
-                      key={result.id}
-                      onClick={() => handleResultClick(result.path)}
-                    >
-                      {result.title}
-                    </SearchResultItem>
-                  ))}
-                </SearchResults>
-              )}
-
-              {/* Natija topilmasa */}
-              {showResults && searchQuery.trim() !== "" && searchResults.length === 0 && (
-                <SearchResults sidebarOpen={sidebarOpen}>
-                  <SearchResultItem className="no-results">
-                    Hech narsa topilmadi
-                  </SearchResultItem>
-                </SearchResults>
-              )}
-            </div>
-
-            <RightSection>
+            {/* 🔹 CHAP QISM (MENU + SEARCH) */}
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+                flex: 1,
+              }}
+            >
+              {/* MENU ICON */}
               <SidebarToggleBtn onClick={onToggle} title="Toggle Sidebar">
                 {sidebarOpen ? (
                   <RiMenuFoldFill size={22} />
@@ -145,6 +104,50 @@ const Header = ({ sidebarOpen, onToggle, isMobile }) => {
                   <RiMenuUnfoldFill size={22} />
                 )}
               </SidebarToggleBtn>
+
+              {/* SEARCH */}
+              <div ref={searchRef} style={{ position: "relative", width: "100%" }}>
+                <InputContainer
+                  sidebarOpen={sidebarOpen}
+                  className={showResults ? "search-active" : ""}
+                >
+                  <SearchIcon />
+                  <input
+                    type="text"
+                    placeholder="Bo‘limni qidirish..."
+                    value={searchQuery}
+                    onChange={handleSearch}
+                    onKeyPress={handleKeyPress}
+                  />
+                </InputContainer>
+
+                {/* NATIJALAR */}
+                {showResults && searchResults.length > 0 && (
+                  <SearchResults sidebarOpen={sidebarOpen}>
+                    {searchResults.map((item) => (
+                      <SearchResultItem
+                        key={item.id}
+                        onClick={() => handleResultClick(item.path)}
+                      >
+                        {item.title}
+                      </SearchResultItem>
+                    ))}
+                  </SearchResults>
+                )}
+
+                {/* TOPILMADI */}
+                {showResults && searchResults.length === 0 && (
+                  <SearchResults sidebarOpen={sidebarOpen}>
+                    <SearchResultItem className="no-results">
+                      Hech narsa topilmadi
+                    </SearchResultItem>
+                  </SearchResults>
+                )}
+              </div>
+            </div>
+
+            {/* 🔹 O‘NG QISM */}
+            <RightSection>
               <UploadBtn
                 as="a"
                 href="/assets/IT_SAF.docx"
@@ -154,11 +157,12 @@ const Header = ({ sidebarOpen, onToggle, isMobile }) => {
                 Yuklab olish
               </UploadBtn>
             </RightSection>
+
           </HeaderWrapper>
         </MaxWidth>
       </BackgroundHeader>
 
-      {/* Mobile overlay */}
+      {/* MOBILE OVERLAY */}
       {isMobile && sidebarOpen && <Overlay onClick={onToggle} />}
     </>
   );

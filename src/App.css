@@ -13,6 +13,22 @@ a{
   text-decoration: none;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+p,
+button,
+li,
+h1,
+h2,
+h3,
+h4,
+span,
+b {
+  font-family: "Poppins", sans-serif;
+    font-weight: 500;
+}
+
+
 body, html, #root {
   width: 100%;
   height: 100%;

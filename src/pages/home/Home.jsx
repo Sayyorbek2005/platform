@@ -18,17 +18,61 @@ import lock from "./assets/icons8-lock-50.png";
 import { MdKeyboardArrowLeft } from "react-icons/md";
 
 const technologu = [
-  { name: "Html", img: html, title: "HTML video darsliklari" },
-  { name: "Css", img: cssImg, title: "CSS video darsliklari" },
-  { name: "Bootstrap", img: boostrap, title: "Bootstrap video darsliklari" },
-  { name: "Sass", img: sas, title: "Sass video darsliklari" },
-  { name: "JavaScript", img: jsScript, title: "JavaScript video darsliklari" },
-  { name: "React", img: react, title: "React video darsliklari" },
-  { name: "redux toolkit", img: reduxToolkit, title: "Redux Toolkit video darsliklari" },
-  { name: "TypeScript", img: tupeScript, title: "TypeScript video darsliklari" },
-  { name: "Vue js", img: vueJs, title: "Vue.js video darsliklari" },
-  { name: "C++", img: c, title: "C++ video darsliklari" },
-  { name: "Python", img: pyhon, title: "Python video darsliklari" },
+  {
+    name: "Html",
+    img: html,
+    description: "HTML asoslarini o‘rganamiz va veb-sahifa tuzilishini yaratishni boshlaymiz. Teglar, atributlar va semantik HTMLdan qanday foydalanishni amalda ko‘rasiz."
+  },
+  {
+    name: "Css",
+    img: cssImg,
+    description: "CSS yordamida sahifaga dizayn berishni o‘rganamiz. Ranglar, fontlar va layoutlarni amaliyotda qo‘llaymiz."
+  },
+  {
+    name: "Bootstrap",
+    img: boostrap,
+    description: "Bootstrap framework bilan tez va chiroyli sahifalar yaratishni o‘rganamiz. Grid tizimi va tayyor komponentlardan foydalanamiz."
+  },
+  {
+    name: "Sass",
+    img: sas,
+    description: "Sass yordamida CSSni samarali va modul tarzda yozishni o‘rganamiz. O‘zgaruvchilar va mixinlar orqali kodni optimallashtiramiz."
+  },
+  {
+    name: "JavaScript",
+    img: jsScript,
+    description: "JavaScript bilan sahifaga interaktivlik qo‘shishni o‘rganamiz. Funksiyalar, sikllar va DOM bilan ishlashni amalda ko‘ramiz."
+  },
+  {
+    name: "React",
+    img: react,
+    description: "React framework orqali komponent asosida sahifalar yaratamiz. State va props yordamida dinamik interfeys hosil qilamiz."
+  },
+  {
+    name: "Redux Toolkit",
+    img: reduxToolkit,
+    description: "Redux Toolkit bilan global state boshqarishni o‘rganamiz. Asosiy store va slice yaratib, ma’lumotlarni boshqaramiz."
+  },
+  {
+    name: "TypeScript",
+    img: tupeScript,
+    description: "TypeScript orqali JavaScriptni kuchaytirilgan tarzda ishlatamiz. Typelar yordamida xatoliklarni oldindan aniqlaymiz."
+  },
+  {
+    name: "Vue js",
+    img: vueJs,
+    description: "Vue.js framework bilan komponent asosida interaktiv sahifalar yaratamiz. Data binding va reaktivlikni amalda ko‘ramiz."
+  },
+  {
+    name: "C++",
+    img: c,
+    description: "C++ dasturlash asoslarini o‘rganamiz va algoritmlar yaratamiz. Funksiyalar, sikllar va ma’lumot tuzilmalarini amalda qo‘llaymiz."
+  },
+  {
+    name: "Python",
+    img: pyhon,
+    description: "Python dasturlash tilini o‘rganamiz va oddiy dasturlar yaratamiz. Funksiyalar, listlar va sikllar bilan amaliyot qilamiz."
+  },
 ];
 
 const videosByTech = {
@@ -109,6 +153,7 @@ const Home = ({ sidebarOpen }) => {
                     >
                       <img src={tech.img} alt={tech.name} />
                       <p>{tech.name}</p>
+                      <p>{tech.description}</p>
                     </div>
                   ))}
                 </div>
